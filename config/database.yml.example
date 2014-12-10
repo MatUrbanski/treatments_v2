@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: treatments_v2_development
+test:
+  <<: *default
+  database: treatments_v2_test
+
+production:
+  <<: *default
+  database: treatments_v2_production
+  username: treatments_v2
+  password: <%= ENV['TREATMENTS_V2_DATABASE_PASSWORD'] %>
