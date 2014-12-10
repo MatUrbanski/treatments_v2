@@ -6,4 +6,9 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = yield
+    #wrapper
+      %nav.navbar.navbar-default.navbar-static-top{role: "navigation", style: "margin-bottom: 0"}
+        = render 'layouts/header'
+        = render 'layouts/sidebar'
+      #page-wrapper
+        = yield

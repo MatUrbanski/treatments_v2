@@ -47,6 +47,8 @@ GEM
     execjs (2.2.2)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
     haml (4.1.0.beta.1)
       tilt
     haml-rails (0.6.0)
@@ -156,6 +158,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   factory_girl
+  font-awesome-rails
   haml-rails
   jquery-rails
   pg

@@ -12,6 +12,7 @@ gem 'spring'
 gem 'pg_power'
 gem 'simple_form'
 gem "haml-rails"
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'rspec-rails'
