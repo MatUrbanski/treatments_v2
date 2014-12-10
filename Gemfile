@@ -9,7 +9,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'spring'
-gem 'foreigner'
+gem 'pg_power'
 gem 'simple_form'
 gem "haml-rails"
 
