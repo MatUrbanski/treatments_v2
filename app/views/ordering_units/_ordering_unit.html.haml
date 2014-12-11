@@ -1,0 +1,18 @@
+%tr.ordering_unit
+  %td.name= ordering_unit.name
+  %td.address
+  %td.doctors_count
+  %td.treatments_count
+  %td.options
+    .dropdown
+      %button.btn.btn-info.btn-sm{"aria-expanded" => "true",
+      "data-toggle" => "dropdown", :type => "button"}
+        = OrderingUnit.human_attribute_name :options
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          = link_to t('ordering_units.index.edit_ordering_unit'),
+            [:edit, ordering_unit]
+        %li
+          = link_to t('ordering_units.index.destroy_ordering_unit'),  ordering_unit,
+            method: :delete, data: { confirm: t('ordering_units.index.are_you_sure') }

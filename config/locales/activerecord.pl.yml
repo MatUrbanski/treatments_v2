@@ -1,0 +1,9 @@
+pl:
+  activerecord:
+    attributes:
+      ordering_unit:
+        name: "Nazwa"
+        address: "Adres"
+        doctors_count: "Liczba lekarzy"
+        treatments_count: "Liczba zabiegów"
+        options: "Opcje"

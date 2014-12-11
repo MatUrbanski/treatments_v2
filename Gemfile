@@ -13,7 +13,8 @@ gem 'pg_power'
 gem 'simple_form'
 gem "haml-rails"
 gem "font-awesome-rails"
-
+gem 'jquery-datatables-rails', '~> 3.1.1'
+gem 'jquery-turbolinks'
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'

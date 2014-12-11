@@ -1,0 +1,8 @@
+pl:
+  ordering_units:
+    index:
+      title: "Jednostki kierujące"
+      new_ordering_unit: "Nowa jednostka kierująca"
+      are_you_sure: "Czy jesteś pewien że checesz usunąć tą jednostkę kierującą?"
+      edit_ordering_unit: "Edytuj"
+      destroy_ordering_unit: "Usuń"
