@@ -11,4 +11,7 @@
         = render 'layouts/header'
         = render 'layouts/sidebar'
       #page-wrapper
+        - unless flash.empty?
+          %br/
+          = flash_message
         = yield

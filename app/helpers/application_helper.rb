@@ -11,4 +11,10 @@ module ApplicationHelper
     form.button :button, t('submit'), data: {disable_with:
       "<i class='fa fa-spinner fa-spin'></i> #{t('saving')}"}, class: 'btn btn-primary'
   end
+
+  def flash_message
+    flash.each do |key, msg|
+      return render "layouts/#{key}", msg: msg
+    end
+  end
 end
