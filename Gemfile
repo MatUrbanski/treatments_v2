@@ -18,11 +18,13 @@ gem 'jquery-turbolinks'
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'capybara'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'database_cleaner'
 end
 
 group :test do
   gem "nyan-cat-formatter"
+  gem 'selenium-webdriver', '>=2.35.1'
+  gem 'capybara'
+  gem "launchy"
 end

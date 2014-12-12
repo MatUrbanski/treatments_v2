@@ -17,7 +17,7 @@ class OrderingUnitsController < ApplicationController
 
   def update
     if @ordering_unit.update(ordering_unit_params)
-      flash[:sucess] = t('ordering_units.updated')
+      flash[:success] = t('ordering_units.updated')
       redirect_to :ordering_units
     else
       render :edit
