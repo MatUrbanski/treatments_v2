@@ -6,4 +6,9 @@ module ApplicationHelper
       end
     end
   end
+
+  def submit_button(form)
+    form.button :button, t('submit'), data: {disable_with:
+      "<i class='fa fa-spinner fa-spin'></i> #{t('saving')}"}, class: 'btn btn-primary'
+  end
 end

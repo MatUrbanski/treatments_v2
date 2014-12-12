@@ -1,5 +1,6 @@
 pl:
   submit: "Zapisz"
+  saving: "Zapisuję..."
   date:
     abbr_day_names:
     - nie
