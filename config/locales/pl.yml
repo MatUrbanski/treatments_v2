@@ -1,4 +1,5 @@
 pl:
+  submit: "Zapisz"
   date:
     abbr_day_names:
     - nie

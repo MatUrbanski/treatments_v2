@@ -1,8 +1,16 @@
 pl:
   ordering_units:
+    created: "Jednostka kierująca została dodana"
+    updated: "Jednostka kierująca została zaktualizowana"
+    destroyed: "Jednostka kierująca została usunięta"
     index:
       title: "Jednostki kierujące"
       new_ordering_unit: "Nowa jednostka kierująca"
+    ordering_unit:
       are_you_sure: "Czy jesteś pewien że checesz usunąć tą jednostkę kierującą?"
       edit_ordering_unit: "Edytuj"
       destroy_ordering_unit: "Usuń"
+    new:
+      title: "Nowa jednostka kierująca"
+    edit:
+      title: "Edycja jednostki kierującej"

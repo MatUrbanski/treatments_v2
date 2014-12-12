@@ -19,14 +19,14 @@ ActiveRecord::Schema.define(version: 20141210155354) do
   enable_extension "plpgsql"
 
   create_table "doctors", force: true do |t|
-    t.string   "first_name",       null: false
-    t.string   "last_name",        null: false
+    t.string   "fullname",         null: false
     t.string   "specialization",   null: false
     t.integer  "ordering_unit_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "doctors", ["fullname"], :name => "index_doctors_on_fullname", :unique => true
   add_index "doctors", ["ordering_unit_id"], :name => "index_doctors_on_ordering_unit_id"
 
   create_table "ordering_units", force: true do |t|
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20141210155354) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "ordering_units", ["name"], :name => "index_ordering_units_on_name", :unique => true
 
 
   add_foreign_key "doctors", "public.ordering_units", :name => "doctors_ordering_unit_id_fk", :column => "ordering_unit_id", :exclude_index => true
