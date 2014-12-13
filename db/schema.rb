@@ -11,12 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210155354) do
+ActiveRecord::Schema.define(version: 20141213140853) do
 
 
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: true do |t|
+    t.string   "street",           null: false
+    t.string   "city",             null: false
+    t.string   "zip_code",         null: false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "addresses", ["addressable_id", "addressable_type"], :name => "index_addresses_on_addressable_id_and_addressable_type"
 
   create_table "doctors", force: true do |t|
     t.string   "fullname",         null: false

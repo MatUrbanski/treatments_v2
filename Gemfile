@@ -15,6 +15,7 @@ gem "haml-rails"
 gem "font-awesome-rails"
 gem 'jquery-datatables-rails', '~> 3.1.1'
 gem 'jquery-turbolinks'
+gem "geocoder"
 
 group :development, :test do
   gem 'rspec-rails'
