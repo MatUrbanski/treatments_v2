@@ -4,7 +4,8 @@ feature "Ordering units management" do
   let!(:ordering_unit)  {create(:ordering_unit)}
 
   scenario "Creating new Ordering Unit" do
-    visit new_ordering_unit_path
+    visit ordering_units_path
+    click_link t('ordering_units.index.new_ordering_unit')
     fill_in t('activerecord.attributes.ordering_unit.name'), with: "Ordering unit name"
     click_button t('submit')
 
@@ -13,7 +14,8 @@ feature "Ordering units management" do
   end
 
   scenario "Updating existing Ordering Unit" do
-    visit edit_ordering_unit_path(ordering_unit.id)
+    visit ordering_units_path
+    click_link t('ordering_units.ordering_unit.edit_ordering_unit')
     fill_in t('activerecord.attributes.ordering_unit.name'), with: "Updated Ordering unit name"
     click_button t('submit')
 
