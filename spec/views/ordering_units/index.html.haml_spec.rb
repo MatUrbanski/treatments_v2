@@ -2,10 +2,12 @@ require "rails_helper"
 
 describe "ordering_units/index" do
   subject { page }
-  let!(:ordering_unit) { create(:ordering_unit, name: "Test name") }
+  let(:address) {build(:address, city: "Test city", street: "Test street", zip_code: "12-345")}
+  let!(:ordering_unit) { create(:ordering_unit, name: "Test name", address: address) }
   before { visit ordering_units_path }
 
   it "proper displays all information about ordering unit" do
     expect(page).to have_content "Test name"
+    expect(page).to have_content("Test street, 12-345 Test city")
   end
 end

@@ -1,9 +1,7 @@
 FactoryGirl.define do
   factory :address do
-    street "MyString"
-city "MyString"
-zip_code "MyString"
-addressable nil
+    sequence(:street) { |n| "Street #{n}" }
+    sequence(:city) { |n| "City #{n}" }
+    sequence(:zip_code) { |n| " 123-4#{n}" }
   end
-
 end

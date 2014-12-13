@@ -6,6 +6,10 @@ class OrderingUnitsController < ApplicationController
     @ordering_units ||= OrderingUnit.all
   end
 
+  def new
+    @ordering_unit.build_address if @ordering_unit.address.nil?
+  end
+
   def create
     if @ordering_unit.save
       flash[:success] = t('ordering_units.created')
@@ -45,6 +49,6 @@ class OrderingUnitsController < ApplicationController
   end
 
   def ordering_unit_params
-    params.require(:ordering_unit).permit(:name)
+    params.require(:ordering_unit).permit(:name, address_attributes: [:street, :zip_code, :city])
   end
 end

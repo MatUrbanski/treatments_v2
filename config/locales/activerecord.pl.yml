@@ -7,3 +7,7 @@ pl:
         doctors_count: "Liczba lekarzy"
         treatments_count: "Liczba zabiegów"
         options: "Opcje"
+      address:
+        street: "Ulica"
+        city: "Miasto"
+        zip_code: "Kod pocztowy"

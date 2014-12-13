@@ -11,5 +11,7 @@ pl:
       destroy_ordering_unit: "Usuń"
     new:
       title: "Nowa jednostka kierująca"
+    form:
+      address: "Adres"
     edit:
       title: "Edycja jednostki kierującej"
