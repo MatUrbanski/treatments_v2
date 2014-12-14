@@ -49,6 +49,7 @@ class OrderingUnitsController < ApplicationController
   end
 
   def ordering_unit_params
-    params.require(:ordering_unit).permit(:name, address_attributes: [:street, :zip_code, :city])
+    params.require(:ordering_unit).permit(:name,
+      address_attributes: [:street, :zip_code, :city])
   end
 end

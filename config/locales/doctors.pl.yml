@@ -1,0 +1,17 @@
+pl:
+  doctors:
+    created: "Lekarz został dodany"
+    updated: "Lekarz został zaktualizowany"
+    destroyed: "Lekarz został usunięty"
+    index:
+      title: "Lekarze"
+      new_doctor: "Nowy lekarz"
+    doctor:
+      edit_doctor: "Edytuj"
+      destroy_doctor: "Usuń"
+    new:
+      title: "Nowa lekarz"
+    form:
+      address: "Adres"
+    edit:
+      title: "Edycja lekarza"

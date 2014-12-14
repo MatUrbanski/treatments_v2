@@ -1,7 +1,12 @@
 .navbar-default.sidebar{:role => "navigation"}
   .sidebar-nav.navbar-collapse
     %ul#side-menu.nav
-      %li{class: active('ordering_unit', "/")}
+      %li{class: active('ordering_unit')}
         = link_to :ordering_units do
           = fa_icon "hospital-o"
           = t('layout.sidebar.ordering_units')
+      %li{class: active('doctor')}
+        = link_to :doctors do
+          = fa_icon "user-md"
+          = t('layout.sidebar.doctors')
+

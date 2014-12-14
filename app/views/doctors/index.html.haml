@@ -1,0 +1,14 @@
+.row
+  .col-lg-12
+    %h1.page-header= t('.title')
+%table.table.table-striped.table-bordered.table-hover#ordering_units.table-condensed
+  %thead
+    %tr
+      %th= Doctor.human_attribute_name :fullname
+      %th= Doctor.human_attribute_name :specialization
+      %th= Doctor.human_attribute_name :ordering_unit
+      %th= Doctor.human_attribute_name :treatments_count
+      %th= Doctor.human_attribute_name :options
+  %tbody
+    = render @doctors
+= link_to t('.new_doctor'), [:new, :doctor], class: 'btn btn-primary'
