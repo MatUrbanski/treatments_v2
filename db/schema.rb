@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214191344) do
+ActiveRecord::Schema.define(version: 20141214195202) do
 
 
 
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20141214191344) do
 
   add_index "ordering_units", ["name"], :name => "index_ordering_units_on_name", :unique => true
 
+  create_table "treatment_types", force: true do |t|
+    t.string   "name"
+    t.integer  "treatment_types_group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "treatment_types", ["treatment_types_group_id"], :name => "index_treatment_types_on_treatment_types_group_id"
+
   create_table "treatment_types_groups", force: true do |t|
     t.string   "name",       null: false
     t.datetime "created_at"
@@ -61,5 +70,7 @@ ActiveRecord::Schema.define(version: 20141214191344) do
 
 
   add_foreign_key "doctors", "public.ordering_units", :name => "doctors_ordering_unit_id_fk", :column => "ordering_unit_id", :exclude_index => true
+
+  add_foreign_key "treatment_types", "public.treatment_types_groups", :name => "treatment_types_treatment_types_group_id_fk", :column => "treatment_types_group_id", :exclude_index => true
 
 end
