@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213140853) do
+ActiveRecord::Schema.define(version: 20141214191344) do
 
 
 
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(version: 20141213140853) do
   end
 
   add_index "ordering_units", ["name"], :name => "index_ordering_units_on_name", :unique => true
+
+  create_table "treatment_types_groups", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "treatment_types_groups", ["name"], :name => "index_treatment_types_groups_on_name", :unique => true
 
 
   add_foreign_key "doctors", "public.ordering_units", :name => "doctors_ordering_unit_id_fk", :column => "ordering_unit_id", :exclude_index => true
