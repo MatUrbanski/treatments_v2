@@ -10,7 +10,7 @@ pl:
       edit_doctor: "Edytuj"
       destroy_doctor: "Usuń"
     new:
-      title: "Nowa lekarz"
+      title: "Nowy lekarz"
     form:
       address: "Adres"
     edit:

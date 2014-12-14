@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Ordering units management" do
-  let!(:ordering_unit)  {create(:ordering_unit)}
+  let!(:ordering_unit)  { create(:ordering_unit) }
 
   scenario "Creating new Ordering Unit" do
     visit ordering_units_path

@@ -10,4 +10,4 @@ $ ->
       "oLanguage": {
         "sUrl": "//cdn.datatables.net/plug-ins/725b2a2115b/i18n/Polish.json"
     }
-  dataTable(["#ordering_units"], [-1], [[0, "desc"]])
+  dataTable(["#ordering_units", "#doctors"], [-1], [[0, "desc"]])

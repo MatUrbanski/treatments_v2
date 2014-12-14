@@ -3,7 +3,7 @@ class Address < ActiveRecord::Base
 
   belongs_to :addressable, polymorphic: true
 
-  after_validation :geocode, if: ->(obj){ obj.street.present? && obj.street_changed? }
+  after_validation :geocode
 
   geocoded_by :to_formatted_s
 
