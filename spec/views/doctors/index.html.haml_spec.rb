@@ -8,7 +8,7 @@ describe "doctors/index" do
     address: address, ordering_unit: ordering_unit) }
   before { visit doctors_path }
 
-  it "proper displays all information about ordering unit" do
+  it "proper displays all information about doctor" do
     expect(page).to have_content "Fullname"
     expect(page).to have_content "Specializtion"
     expect(page).to have_content "Ordering unit"

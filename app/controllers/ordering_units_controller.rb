@@ -29,9 +29,13 @@ class OrderingUnitsController < ApplicationController
   end
 
   def destroy
-    @ordering_unit.destroy
-    flash[:error] = t('ordering_units.destroyed')
-    redirect_to :ordering_units
+    if @ordering_unit.doctors.empty?
+      @ordering_unit.destroy
+      flash[:error] = t('ordering_units.destroyed')
+    else
+      flash[:error] = t('ordering_units.has_doctors_or_treatments')
+    end
+      redirect_to :ordering_units
   end
 
   private
