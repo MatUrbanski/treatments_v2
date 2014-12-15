@@ -1,0 +1,15 @@
+pl:
+  treatment_types:
+    created: "Rodzaj zabiegu został dodany"
+    updated: "Rodzaj zabiegu został zaktualizowany"
+    destroyed: "Rodzaj zabiegu został usunięty"
+    index:
+      title: "Rodzaje zabiegów"
+      new_treatment_type: "Nowy rodzaj zabiegu"
+    treatment_type:
+      edit_treatment_type: "Edytuj"
+      destroy_treatment_type: "Usuń"
+    new:
+      title: "Nowy rodzaj zabiegu"
+    edit:
+      title: "Edycja rodzaju zabiegu"

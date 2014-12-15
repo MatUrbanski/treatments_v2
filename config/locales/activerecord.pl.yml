@@ -18,3 +18,8 @@ pl:
         ordering_unit: "Jednostka kierująca"
         treatments_count: "Liczba zabiegów"
         options: "Opcje"
+      treatment_type:
+        name: "Nazwa"
+        treatment_types_group: "Grupa zabiegu"
+        treatments_count: "Liczba zabiegów"
+        options: "Opcje"

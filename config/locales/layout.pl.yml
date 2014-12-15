@@ -3,3 +3,4 @@ pl:
     sidebar:
       ordering_units: "Jednostki kierujące"
       doctors: "Lekarze"
+      treatment_types: "Rodzaje zabiegów"

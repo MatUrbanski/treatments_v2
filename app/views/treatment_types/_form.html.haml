@@ -1,0 +1,5 @@
+= simple_form_for @treatment_type do |f|
+  .col-md-4
+    = f.input :name
+    = f.association :treatment_types_group
+    = submit_button(f)

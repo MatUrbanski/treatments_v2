@@ -9,4 +9,10 @@
         = link_to :doctors do
           = fa_icon "user-md"
           = t('layout.sidebar.doctors')
+      %li{class: active('treatment_type')}
+        = link_to :treatment_types do
+          = fa_icon "file"
+          = t('layout.sidebar.treatment_types')
+
+
 
