@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214195202) do
+ActiveRecord::Schema.define(version: 20141216201619) do
 
 
 
@@ -50,6 +50,18 @@ ActiveRecord::Schema.define(version: 20141214195202) do
   end
 
   add_index "ordering_units", ["name"], :name => "index_ordering_units_on_name", :unique => true
+
+  create_table "patients", force: true do |t|
+    t.string   "fullname",   null: false
+    t.string   "pesel"
+    t.string   "sex",        null: false
+    t.date     "birth_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "patients", ["fullname"], :name => "index_patients_on_fullname", :unique => true
+  add_index "patients", ["pesel"], :name => "index_patients_on_pesel", :unique => true
 
   create_table "treatment_types", force: true do |t|
     t.string   "name"
