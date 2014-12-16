@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20141214195202) do
     t.datetime "updated_at"
   end
 
+  add_index "treatment_types", ["name"], :name => "index_treatment_types_on_name", :unique => true
   add_index "treatment_types", ["treatment_types_group_id"], :name => "index_treatment_types_on_treatment_types_group_id"
 
   create_table "treatment_types_groups", force: true do |t|
