@@ -1,6 +1,6 @@
 %tr.ordering_unit
   %td= patient.fullname
-  %td= patient.pesel
+  %td= patient_pesel(patient)
   %td= patient.address.to_formatted_s
   %td= t("sex.#{patient.sex}")
   %td= patient.birth_date

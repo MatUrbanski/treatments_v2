@@ -36,4 +36,5 @@ pl:
         sex: "Płeć"
         birth_date: "Data urodzenia"
         treatments_count: "Liczba zabiegów"
+        without_pesel: "Zapisz bez numeru PESEL"
         options: "Opcje"

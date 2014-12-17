@@ -4,6 +4,7 @@
     = f.input :pesel
     = f.input :birth_date, as: :string, hint: t('.date_format_hint')
     = f.input :sex, collection: Patient.sex.values.map{|x| [t("sex.#{x}"), x]}
+    = f.input :without_pesel
     = field_set_tag t('.address')
     = render 'address/form', f: f
     = submit_button(f)

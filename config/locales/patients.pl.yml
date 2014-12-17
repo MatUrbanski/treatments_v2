@@ -3,6 +3,7 @@ pl:
     created: "Pacjent został dodany"
     updated: "Pacjent został zaktualizowany"
     destroyed: "Pacjent został usunięty"
+    pesel_alert: "Brak numeru pesel"
     index:
       title: "Pacjenci"
       new_patient: "Nowy pacjent"
