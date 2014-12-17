@@ -3,6 +3,7 @@ FactoryGirl.define do
     sequence(:fullname) { |n| "Patient #{n}" }
     pesel "12345678901"
     birth_date "2014-12-16"
+    without_pesel false
 
     trait :male do
       sex "Male"

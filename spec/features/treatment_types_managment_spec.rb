@@ -6,9 +6,12 @@ feature "Treatment types" do
   let!(:treatment_type) { create(:treatment_type, treatment_types_group: group) }
 
   feature "Create" do
-    scenario "Should create new treatment type" do
+    before do
       visit treatment_types_path
       click_link t('treatment_types.index.new_treatment_type')
+    end
+
+    scenario "Should create new treatment type" do
       fill_in t('activerecord.attributes.treatment_type.name'), with: "Treatment type name"
       select 'Test group', from: t('activerecord.attributes.treatment_type.treatment_types_group')
       click_button t('submit')
@@ -17,12 +20,22 @@ feature "Treatment types" do
       expect(page).to have_content("Test group")
       expect(page).to have_content("Treatment type name")
     end
+
+    scenario "Should not create new treatment type" do
+      click_button t('submit')
+
+      expect(page).to_not have_text(t('treatment_types.created'))
+      expect(current_path).to eq treatment_types_path
+    end
   end
 
   feature "Update" do
-    scenario "Should update existing treatment type" do
+    before do
       visit treatment_types_path
       click_link t('treatment_types.treatment_type.edit_treatment_type')
+    end
+
+    scenario "Should update existing treatment type" do
       fill_in t('activerecord.attributes.treatment_type.name'), with: "Updated treatment type name"
       select 'Test group 2', from: t('activerecord.attributes.treatment_type.treatment_types_group')
       click_button t('submit')
@@ -30,6 +43,14 @@ feature "Treatment types" do
       expect(page).to have_text(t('treatment_types.updated'))
       expect(page).to have_content("Test group 2")
       expect(page).to have_content("Updated treatment type name")
+    end
+
+    scenario "Should not update existing treatment type" do
+      fill_in t('activerecord.attributes.treatment_type.name'), with: nil
+      click_button t('submit')
+
+      expect(page).to_not have_text(t('treatment_types.updated'))
+      expect(current_path).to eq treatment_type_path(treatment_type)
     end
   end
 

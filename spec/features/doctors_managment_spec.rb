@@ -5,9 +5,12 @@ feature "Doctors" do
   let!(:doctor)  { create(:doctor, ordering_unit: ordering_unit)}
 
   feature "Create" do
-    scenario "Should create new doctor" do
+    before do
       visit doctors_path
       click_link t('doctors.index.new_doctor')
+    end
+
+    scenario "Should create new doctor" do
       fill_in t('activerecord.attributes.doctor.fullname'),       with: "Fullname"
       fill_in t('activerecord.attributes.doctor.specialization'), with: "Specialization"
       fill_in t('activerecord.attributes.address.street'),        with: "Test street"
@@ -22,12 +25,22 @@ feature "Doctors" do
       expect(page).to have_content("Test street, 12-345 Test city")
       expect(page).to have_content("Test ordering unit")
     end
+
+    scenario "Should not create new doctor" do
+      click_button t('submit')
+
+      expect(page).to_not have_text(t('doctors.created'))
+      expect(current_path).to eq doctors_path
+    end
   end
 
   feature "Update" do
-    scenario "Should update doctor" do
+    before do
       visit doctors_path
       click_link t('doctors.doctor.edit_doctor')
+    end
+
+    scenario "Should update doctor" do
       fill_in t('activerecord.attributes.doctor.fullname'),       with: "Updated Fullname"
       fill_in t('activerecord.attributes.doctor.specialization'), with: "Updated Specialization"
       select 'Test ordering unit', from: t('activerecord.attributes.doctor.ordering_unit')
@@ -41,6 +54,14 @@ feature "Doctors" do
       expect(page).to have_content("Updated Specialization")
       expect(page).to have_content("Updated street, 12-345 Updated city")
       expect(page).to have_content("Test ordering unit")
+    end
+
+    scenario "Should not update doctor" do
+      fill_in t('activerecord.attributes.doctor.fullname'), with: nil
+      click_button t('submit')
+
+      expect(page).to_not have_text(t('doctors.updated'))
+      expect(current_path).to eq doctor_path(doctor)
     end
   end
 
