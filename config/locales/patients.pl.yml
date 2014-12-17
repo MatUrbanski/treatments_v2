@@ -1,0 +1,18 @@
+pl:
+  patients:
+    created: "Pacjent został dodany"
+    updated: "Pacjent został zaktualizowany"
+    destroyed: "Pacjent został usunięty"
+    index:
+      title: "Pacjenci"
+      new_patient: "Nowy pacjent"
+    patient:
+      edit_patient: "Edytuj"
+      destroy_patient: "Usuń"
+    new:
+      title: "Nowy pacjent"
+    form:
+      address: "Adres"
+      date_format_hint: "yyyy-mm-dd"
+    edit:
+      title: "Edycja pacjenta"

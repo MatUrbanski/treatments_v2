@@ -1,0 +1,9 @@
+= simple_form_for @patient do |f|
+  .col-md-4
+    = f.input :fullname
+    = f.input :pesel
+    = f.input :birth_date, as: :string, hint: t('.date_format_hint')
+    = f.input :sex, collection: Patient.sex.values.map{|x| [t("sex.#{x}"), x]}
+    = field_set_tag t('.address')
+    = render 'address/form', f: f
+    = submit_button(f)

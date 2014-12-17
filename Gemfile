@@ -16,6 +16,8 @@ gem "font-awesome-rails"
 gem 'jquery-datatables-rails', '~> 3.1.1'
 gem 'jquery-turbolinks'
 gem "geocoder"
+gem "enumerize"
+gem "date_validator"
 
 group :development, :test do
   gem 'rspec-rails'

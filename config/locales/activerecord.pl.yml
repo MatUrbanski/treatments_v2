@@ -1,5 +1,11 @@
 pl:
   activerecord:
+    errors:
+      models:
+        patient:
+          attributes:
+            birth_date:
+              not_a_date: "Nieporawny format daty"
     attributes:
       ordering_unit:
         name: "Nazwa"
@@ -21,5 +27,13 @@ pl:
       treatment_type:
         name: "Nazwa"
         treatment_types_group: "Grupa zabiegu"
+        treatments_count: "Liczba zabiegów"
+        options: "Opcje"
+      patient:
+        fullname: "Imię i Nazwisko"
+        address: "Adres"
+        pesel: "PESEL"
+        sex: "Płeć"
+        birth_date: "Data urodzenia"
         treatments_count: "Liczba zabiegów"
         options: "Opcje"
