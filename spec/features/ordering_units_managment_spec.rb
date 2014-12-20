@@ -11,9 +11,7 @@ feature "Ordering units" do
 
     scenario "should create new ordering Unit" do
       fill_in t('activerecord.attributes.ordering_unit.name'),  with: "Ordering unit name"
-      fill_in t('activerecord.attributes.address.street'),      with: "Test street"
-      fill_in t('activerecord.attributes.address.city'),        with: "Test city"
-      fill_in t('activerecord.attributes.address.zip_code'),    with: "12-345"
+      fill_address_fields("Test street", "Test city", "12-345")
       click_button t('submit')
 
       expect(page).to have_text(t('ordering_units.created'))
@@ -37,9 +35,7 @@ feature "Ordering units" do
 
     scenario "should update existing Ordering Unit" do
       fill_in t('activerecord.attributes.ordering_unit.name'), with: "Updated Ordering unit name"
-      fill_in t('activerecord.attributes.address.street'),     with: "Updated street"
-      fill_in t('activerecord.attributes.address.city'),       with: "Updated city"
-      fill_in t('activerecord.attributes.address.zip_code'),   with: "12-345"
+      fill_address_fields("Updated street", "Updated city", "12-345")
       click_button t('submit')
 
       expect(page).to have_text(t('ordering_units.updated'))
@@ -69,7 +65,7 @@ feature "Ordering units" do
 
   feature "Deleting ordering unit that have associated records" do
     let!(:doctor) { create(:doctor, ordering_unit: ordering_unit) }
-    scenario "should not delete existing orderingunit" do
+    scenario "should not delete existing ordering unit" do
       visit ordering_units_path
       click_link t('ordering_units.ordering_unit.destroy_ordering_unit')
 

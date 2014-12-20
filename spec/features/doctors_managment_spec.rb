@@ -10,12 +10,10 @@ feature "Doctors" do
       click_link t('doctors.index.new_doctor')
     end
 
-    scenario "Should create new doctor" do
+    scenario "should create new doctor" do
       fill_in t('activerecord.attributes.doctor.fullname'),       with: "Fullname"
       fill_in t('activerecord.attributes.doctor.specialization'), with: "Specialization"
-      fill_in t('activerecord.attributes.address.street'),        with: "Test street"
-      fill_in t('activerecord.attributes.address.city'),          with: "Test city"
-      fill_in t('activerecord.attributes.address.zip_code'),      with: "12-345"
+      fill_address_fields("Test street", "Test city", "12-345")
       select 'Test ordering unit', from: t('activerecord.attributes.doctor.ordering_unit')
       click_button t('submit')
 
@@ -26,7 +24,7 @@ feature "Doctors" do
       expect(page).to have_content("Test ordering unit")
     end
 
-    scenario "Should not create new doctor" do
+    scenario "should not create new doctor" do
       click_button t('submit')
 
       expect(page).to_not have_text(t('doctors.created'))
@@ -40,13 +38,11 @@ feature "Doctors" do
       click_link t('doctors.doctor.edit_doctor')
     end
 
-    scenario "Should update doctor" do
+    scenario "should update doctor" do
       fill_in t('activerecord.attributes.doctor.fullname'),       with: "Updated Fullname"
       fill_in t('activerecord.attributes.doctor.specialization'), with: "Updated Specialization"
       select 'Test ordering unit', from: t('activerecord.attributes.doctor.ordering_unit')
-      fill_in t('activerecord.attributes.address.street'),        with: "Updated street"
-      fill_in t('activerecord.attributes.address.city'),          with: "Updated city"
-      fill_in t('activerecord.attributes.address.zip_code'),      with: "12-345"
+      fill_address_fields("Updated street", "Updated city", "12-345")
       click_button t('submit')
 
       expect(page).to have_text(t('doctors.updated'))
@@ -56,7 +52,7 @@ feature "Doctors" do
       expect(page).to have_content("Test ordering unit")
     end
 
-    scenario "Should not update doctor" do
+    scenario "should not update doctor" do
       fill_in t('activerecord.attributes.doctor.fullname'), with: nil
       click_button t('submit')
 
@@ -66,7 +62,7 @@ feature "Doctors" do
   end
 
   feature "Deleting doctor that not have any associated records" do
-    scenario "Should delete existing Doctor" do
+    scenario "should delete existing Doctor" do
       visit doctors_path
       click_link t('doctors.doctor.destroy_doctor')
 

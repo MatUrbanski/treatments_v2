@@ -3,14 +3,14 @@ FactoryGirl.define do
     sequence(:fullname) { |n| "Patient #{n}" }
     pesel "12345678901"
     birth_date "2014-12-16"
-    without_pesel false
+    address
 
     trait :male do
-      sex "Male"
+      sex "male"
     end
 
     trait :female do
-      sex "Female"
+      sex "female"
     end
   end
 end

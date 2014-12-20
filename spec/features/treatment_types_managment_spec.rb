@@ -11,7 +11,7 @@ feature "Treatment types" do
       click_link t('treatment_types.index.new_treatment_type')
     end
 
-    scenario "Should create new treatment type" do
+    scenario "should create new treatment type" do
       fill_in t('activerecord.attributes.treatment_type.name'), with: "Treatment type name"
       select 'Test group', from: t('activerecord.attributes.treatment_type.treatment_types_group')
       click_button t('submit')
@@ -21,7 +21,7 @@ feature "Treatment types" do
       expect(page).to have_content("Treatment type name")
     end
 
-    scenario "Should not create new treatment type" do
+    scenario "should not create new treatment type" do
       click_button t('submit')
 
       expect(page).to_not have_text(t('treatment_types.created'))
@@ -35,7 +35,7 @@ feature "Treatment types" do
       click_link t('treatment_types.treatment_type.edit_treatment_type')
     end
 
-    scenario "Should update existing treatment type" do
+    scenario "should update existing treatment type" do
       fill_in t('activerecord.attributes.treatment_type.name'), with: "Updated treatment type name"
       select 'Test group 2', from: t('activerecord.attributes.treatment_type.treatment_types_group')
       click_button t('submit')
@@ -45,7 +45,7 @@ feature "Treatment types" do
       expect(page).to have_content("Updated treatment type name")
     end
 
-    scenario "Should not update existing treatment type" do
+    scenario "should not update existing treatment type" do
       fill_in t('activerecord.attributes.treatment_type.name'), with: nil
       click_button t('submit')
 
@@ -54,8 +54,8 @@ feature "Treatment types" do
     end
   end
 
-  feature "Deleting doctor that not have any associated records" do
-    scenario "Should delete existing Doctor" do
+  feature "Deleting treatment type that not have any associated records" do
+    scenario "should delete existing treatment type" do
       visit treatment_types_path
       click_link t('treatment_types.treatment_type.destroy_treatment_type')
 
