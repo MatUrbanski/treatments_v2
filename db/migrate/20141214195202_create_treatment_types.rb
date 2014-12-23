@@ -6,7 +6,7 @@ class CreateTreatmentTypes < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_foreign_key(:treatment_types, :treatment_types_groups, exclude_index: true)
+    add_foreign_key(:treatment_types, :treatment_types_groups)
     add_index :treatment_types, :name, unique: true
   end
 end

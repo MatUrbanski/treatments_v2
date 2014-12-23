@@ -1,0 +1,4 @@
+.row
+  .col-lg-3#search
+    = simple_form_for @search_form, { url: url, method: :get, remote: true} do |f|
+      = f.input :query, placeholder: placeholder, label: false

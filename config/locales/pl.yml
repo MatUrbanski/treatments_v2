@@ -1,6 +1,7 @@
 pl:
   submit: "Zapisz"
   saving: "Zapisuję..."
+  search_placeholder: "Wyszukaj"
   sex:
     male: "Mężczyzna"
     female: "Kobieta"

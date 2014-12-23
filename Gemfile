@@ -8,15 +8,15 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'pg_power'
 gem 'simple_form'
 gem "haml-rails"
 gem "font-awesome-rails"
-gem 'jquery-datatables-rails', '~> 3.1.1'
 gem 'jquery-turbolinks'
 gem "geocoder"
 gem "enumerize"
 gem "date_validator"
+gem 'kaminari'
+gem 'virtus'
 
 group :development, :test do
   gem 'rspec-rails'

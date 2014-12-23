@@ -3,7 +3,8 @@ class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:edit, :update, :destroy]
 
   def index
-    @doctors ||= Doctor.all
+    @search_form = SearchForm.new(params[:search_form])
+    @doctors = @search_form.submit('doctors_search').page(params[:page])
   end
 
   def new
@@ -37,14 +38,14 @@ class DoctorsController < ApplicationController
   private
 
   def set_doctor
-    @doctor ||= Doctor.find(params[:id])
+    @doctor = Doctor.find(params[:id])
   end
 
   def build_doctor
     unless params[:doctor].nil?
-      @doctor ||= Doctor.new(doctor_params)
+      @doctor = Doctor.new(doctor_params)
     else
-      @doctor ||= Doctor.new
+      @doctor = Doctor.new
     end
   end
 

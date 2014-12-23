@@ -9,4 +9,9 @@ class OrderingUnit < ActiveRecord::Base
   def doctors_count
     doctors.count || 0
   end
+
+  def self.search(query)
+    query = "%#{query}%"
+    where("name LIKE ? ", query)
+  end
 end

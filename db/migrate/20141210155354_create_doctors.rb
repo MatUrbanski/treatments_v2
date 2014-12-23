@@ -9,6 +9,6 @@ class CreateDoctors < ActiveRecord::Migration
     end
 
     add_index :doctors, :fullname, unique: true
-    add_foreign_key(:doctors, :ordering_units, exclude_index: true)
+    add_foreign_key(:doctors, :ordering_units)
   end
 end

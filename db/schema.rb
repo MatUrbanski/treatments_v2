@@ -13,12 +13,10 @@
 
 ActiveRecord::Schema.define(version: 20141217194722) do
 
-
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "addresses", force: true do |t|
+  create_table "addresses", force: :cascade do |t|
     t.string   "street",           null: false
     t.string   "city",             null: false
     t.string   "zip_code",         null: false
@@ -30,9 +28,9 @@ ActiveRecord::Schema.define(version: 20141217194722) do
     t.datetime "updated_at"
   end
 
-  add_index "addresses", ["addressable_id", "addressable_type"], :name => "index_addresses_on_addressable_id_and_addressable_type"
+  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
 
-  create_table "doctors", force: true do |t|
+  create_table "doctors", force: :cascade do |t|
     t.string   "fullname",         null: false
     t.string   "specialization",   null: false
     t.integer  "ordering_unit_id", null: false
@@ -40,18 +38,18 @@ ActiveRecord::Schema.define(version: 20141217194722) do
     t.datetime "updated_at"
   end
 
-  add_index "doctors", ["fullname"], :name => "index_doctors_on_fullname", :unique => true
-  add_index "doctors", ["ordering_unit_id"], :name => "index_doctors_on_ordering_unit_id"
+  add_index "doctors", ["fullname"], name: "index_doctors_on_fullname", unique: true, using: :btree
+  add_index "doctors", ["ordering_unit_id"], name: "index_doctors_on_ordering_unit_id", using: :btree
 
-  create_table "ordering_units", force: true do |t|
+  create_table "ordering_units", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "ordering_units", ["name"], :name => "index_ordering_units_on_name", :unique => true
+  add_index "ordering_units", ["name"], name: "index_ordering_units_on_name", unique: true, using: :btree
 
-  create_table "patients", force: true do |t|
+  create_table "patients", force: :cascade do |t|
     t.string   "fullname",                      null: false
     t.string   "pesel"
     t.string   "sex",                           null: false
@@ -61,30 +59,27 @@ ActiveRecord::Schema.define(version: 20141217194722) do
     t.boolean  "without_pesel", default: false
   end
 
-  add_index "patients", ["fullname"], :name => "index_patients_on_fullname", :unique => true
-  add_index "patients", ["pesel"], :name => "index_patients_on_pesel", :unique => true
+  add_index "patients", ["fullname"], name: "index_patients_on_fullname", unique: true, using: :btree
+  add_index "patients", ["pesel"], name: "index_patients_on_pesel", unique: true, using: :btree
 
-  create_table "treatment_types", force: true do |t|
+  create_table "treatment_types", force: :cascade do |t|
     t.string   "name"
     t.integer  "treatment_types_group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "treatment_types", ["name"], :name => "index_treatment_types_on_name", :unique => true
-  add_index "treatment_types", ["treatment_types_group_id"], :name => "index_treatment_types_on_treatment_types_group_id"
+  add_index "treatment_types", ["name"], name: "index_treatment_types_on_name", unique: true, using: :btree
+  add_index "treatment_types", ["treatment_types_group_id"], name: "index_treatment_types_on_treatment_types_group_id", using: :btree
 
-  create_table "treatment_types_groups", force: true do |t|
+  create_table "treatment_types_groups", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "treatment_types_groups", ["name"], :name => "index_treatment_types_groups_on_name", :unique => true
+  add_index "treatment_types_groups", ["name"], name: "index_treatment_types_groups_on_name", unique: true, using: :btree
 
-
-  add_foreign_key "doctors", "public.ordering_units", :name => "doctors_ordering_unit_id_fk", :column => "ordering_unit_id", :exclude_index => true
-
-  add_foreign_key "treatment_types", "public.treatment_types_groups", :name => "treatment_types_treatment_types_group_id_fk", :column => "treatment_types_group_id", :exclude_index => true
-
+  add_foreign_key "doctors", "ordering_units"
+  add_foreign_key "treatment_types", "treatment_types_groups"
 end

@@ -3,7 +3,8 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:edit, :update, :destroy]
 
   def index
-    @patients ||= Patient.all
+    @search_form = SearchForm.new(params[:search_form])
+    @patients = @search_form.submit("patients_search").page(params[:page])
   end
 
   def new

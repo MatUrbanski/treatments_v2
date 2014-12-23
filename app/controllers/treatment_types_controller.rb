@@ -3,7 +3,8 @@ class TreatmentTypesController < ApplicationController
   before_action :set_treatment_type, only: [:edit, :update, :destroy]
 
   def index
-    @treatment_types ||= TreatmentType.all
+    @search_form = SearchForm.new(params[:search_form])
+    @treatment_types = @search_form.submit('treatment_types_search').page(params[:page])
   end
 
   def create
@@ -33,14 +34,14 @@ class TreatmentTypesController < ApplicationController
   private
 
   def set_treatment_type
-    @treatment_type ||= TreatmentType.find(params[:id])
+    @treatment_type = TreatmentType.find(params[:id])
   end
 
   def build_treatment_type
     unless params[:treatment_type].nil?
-      @treatment_type ||= TreatmentType.new(treatment_type_params)
+      @treatment_type = TreatmentType.new(treatment_type_params)
     else
-      @treatment_type ||= TreatmentType.new
+      @treatment_type = TreatmentType.new
     end
   end
 

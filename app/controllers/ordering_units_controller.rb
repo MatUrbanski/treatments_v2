@@ -3,7 +3,8 @@ class OrderingUnitsController < ApplicationController
   before_action :set_ordering_unit, only: [:edit, :update, :destroy]
 
   def index
-    @ordering_units ||= OrderingUnit.all
+    @search_form = SearchForm.new(params[:search_form])
+    @ordering_units = @search_form.submit('ordering_units_search').page(params[:page])
   end
 
   def new
@@ -35,20 +36,20 @@ class OrderingUnitsController < ApplicationController
     else
       flash[:error] = t('ordering_units.has_doctors_or_treatments')
     end
-      redirect_to :ordering_units
+    redirect_to :ordering_units
   end
 
   private
 
   def set_ordering_unit
-    @ordering_unit ||= OrderingUnit.find(params[:id])
+    @ordering_unit = OrderingUnit.find(params[:id])
   end
 
   def build_ordering_unit
     unless params[:ordering_unit].nil?
-      @ordering_unit ||= OrderingUnit.new(ordering_unit_params)
+      @ordering_unit = OrderingUnit.new(ordering_unit_params)
     else
-      @ordering_unit ||= OrderingUnit.new
+      @ordering_unit = OrderingUnit.new
     end
   end
 

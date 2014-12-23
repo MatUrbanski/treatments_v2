@@ -7,6 +7,7 @@ pl:
     index:
       title: "Jednostki kierujące"
       new_ordering_unit: "Nowa jednostka kierująca"
+      search_placeholder: "Wyszukaj jednostkę kierującą"
     ordering_unit:
       edit_ordering_unit: "Edytuj"
       destroy_ordering_unit: "Usuń"

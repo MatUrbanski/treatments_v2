@@ -1,7 +1,8 @@
 .row
   .col-lg-12
     %h1.page-header= t('.title')
-%table.table.table-striped.table-bordered.table-hover#doctors.table-condensed
+= render "shared/search_form", url: patients_path, placeholder: t('.search_placeholder')
+%table.table.table-striped.table-bordered.table-hover.table-condensed
   %thead
     %tr
       %th= Patient.human_attribute_name :fullname
@@ -11,6 +12,9 @@
       %th= Patient.human_attribute_name :birth_date
       %th= Patient.human_attribute_name :treatments_count
       %th= Patient.human_attribute_name :options
-  %tbody
+  %tbody#patients
     = render @patients
+.pagination
+  = paginate @patients, remote: true
+%br/
 = link_to t('.new_patient'), [:new, :patient], class: 'btn btn-primary'

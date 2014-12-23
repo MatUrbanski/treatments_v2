@@ -6,6 +6,7 @@ pl:
     index:
       title: "Rodzaje zabiegów"
       new_treatment_type: "Nowy rodzaj zabiegu"
+      search_placeholder: "Wyszukaj rodzaj zabiegu"
     treatment_type:
       edit_treatment_type: "Edytuj"
       destroy_treatment_type: "Usuń"

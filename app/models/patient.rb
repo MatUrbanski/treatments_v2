@@ -1,6 +1,6 @@
 class Patient < ActiveRecord::Base
   extend Enumerize
-
+  paginates_per 10
   has_one :address, as: :addressable, dependent: :destroy
 
   validates :sex, presence: true
@@ -15,5 +15,10 @@ class Patient < ActiveRecord::Base
 
   def without_pesel?
     without_pesel == true
+  end
+
+  def self.search(query)
+    query = "%#{query}%"
+    where("fullname LIKE ? OR pesel LIKE ?", query, query)
   end
 end

@@ -6,4 +6,9 @@ class Doctor < ActiveRecord::Base
   validates :fullname, presence: true, uniqueness: true
 
   accepts_nested_attributes_for :address
+
+  def self.search(query)
+    query = "%#{query}%"
+    where("fullname LIKE ? OR specialization LIKE ?", query, query)
+  end
 end

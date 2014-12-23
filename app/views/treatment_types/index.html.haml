@@ -1,13 +1,16 @@
 .row
   .col-lg-12
     %h1.page-header= t('.title')
-%table.table.table-striped.table-bordered.table-hover#treatment_types.table-condensed
+= render "shared/search_form", url: treatment_types_path, placeholder: t('.search_placeholder')
+%table.table.table-striped.table-bordered.table-hover.table-condensed
   %thead
     %tr
       %th= TreatmentType.human_attribute_name :name
       %th= TreatmentType.human_attribute_name :treatment_types_group
       %th= TreatmentType.human_attribute_name :treatments_count
       %th= TreatmentType.human_attribute_name :options
-  %tbody
+  %tbody#treatment_types
     = render @treatment_types
+.pagination
+  = paginate @treatment_types, remote: true
 = link_to t('.new_treatment_type'), [:new, :treatment_type], class: 'btn btn-primary'

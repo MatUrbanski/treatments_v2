@@ -3,4 +3,9 @@ class TreatmentType < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
   validates :treatment_types_group, presence: true
+
+  def self.search(query)
+    query = "%#{query}%"
+    where("name LIKE ?", query)
+  end
 end

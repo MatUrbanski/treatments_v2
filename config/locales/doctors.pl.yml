@@ -6,6 +6,7 @@ pl:
     index:
       title: "Lekarze"
       new_doctor: "Nowy lekarz"
+      search_placeholder: "Wyszukaj lekarza"
     doctor:
       edit_doctor: "Edytuj"
       destroy_doctor: "Usuń"

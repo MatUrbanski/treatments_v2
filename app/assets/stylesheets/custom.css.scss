@@ -7,10 +7,18 @@ table td, table th {
   font-size: 15px;
 }
 
-.alert {
+.alert, .center {
   text-align: center;
 }
 
 .pesel_alert{
   color: red;
+}
+
+.pagination{
+  float: right;
+}
+
+#search{
+  float: right
 }
