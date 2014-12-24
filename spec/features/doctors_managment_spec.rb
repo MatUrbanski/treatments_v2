@@ -2,11 +2,12 @@ require "rails_helper"
 
 feature "Doctors" do
   let(:ordering_unit) { build(:ordering_unit, name: "Test ordering unit") }
-  let!(:doctor)  { create(:doctor, ordering_unit: ordering_unit)}
+  let!(:doctor)  { create(:doctor, fullname: "Doctor", specialization: "Specialization", ordering_unit: ordering_unit)}
+  let!(:doctor2) { create(:doctor, fullname: "Test doctort", specialization: "Test specialization") }
+  before { visit doctors_path }
 
   feature "Create" do
     before do
-      visit doctors_path
       click_link t('doctors.index.new_doctor')
     end
 
@@ -34,8 +35,7 @@ feature "Doctors" do
 
   feature "Update" do
     before do
-      visit doctors_path
-      click_link t('doctors.doctor.edit_doctor')
+      click_link t('doctors.doctor.edit_doctor'), match: :first
     end
 
     scenario "should update doctor" do
@@ -63,10 +63,17 @@ feature "Doctors" do
 
   feature "Deleting doctor that not have any associated records" do
     scenario "should delete existing Doctor" do
-      visit doctors_path
-      click_link t('doctors.doctor.destroy_doctor')
+      click_link t('doctors.doctor.destroy_doctor'), match: :first
 
       expect(page).to have_text(t('doctors.destroyed'))
+    end
+  end
+
+  feature "Searching" do
+    scenario "Should find proper doctors", js: true do
+      fill_in "search_form_query", with: "Test"
+      expect(page).to have_text(doctor2.fullname)
+      expect(page).to_not have_text(doctor.fullname)
     end
   end
 end

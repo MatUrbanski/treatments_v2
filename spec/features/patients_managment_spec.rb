@@ -1,11 +1,12 @@
 require "rails_helper"
 
 feature "Patients" do
-  let!(:patient) { create(:patient, :male) }
+  let!(:patient) { create(:patient, :male, fullname: "Patient", pesel: "12345678901") }
+  let!(:patient2) { create(:patient, :male, fullname: "Test patient", pesel: "09876543211") }
+  before { visit patients_path }
 
   feature "Create" do
     before do
-      visit patients_path
       click_link t('patients.index.new_patient')
     end
 
@@ -49,8 +50,7 @@ feature "Patients" do
 
   feature "Update" do
     before do
-      visit patients_path
-      click_link t('patients.patient.edit_patient')
+      click_link t('patients.patient.edit_patient'), match: :first
     end
 
     scenario "should update patient" do
@@ -80,9 +80,17 @@ feature "Patients" do
   feature "Delete" do
     scenario "Should delete existing patient" do
       visit patients_path
-      click_link t('patients.patient.destroy_patient')
+      click_link t('patients.patient.destroy_patient'), match: :first
 
       expect(page).to have_text(t('patients.destroyed'))
+    end
+  end
+
+   feature "Searching" do
+    scenario "Should find proper patients", js: true do
+      fill_in "search_form_query", with: "Test"
+      expect(page).to have_text(patient2.fullname)
+      expect(page).to_not have_text(patient.fullname)
     end
   end
 end

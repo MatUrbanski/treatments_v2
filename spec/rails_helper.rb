@@ -13,16 +13,21 @@ RSpec.configure do |config|
   config.include Capybara::DSL
 
   config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before :each do
+    if Capybara.current_driver == :rack_test
       DatabaseCleaner.strategy = :transaction
-      DatabaseCleaner.clean_with(:truncation)
+    else
+      DatabaseCleaner.strategy = :truncation
     end
+    DatabaseCleaner.start
+  end
 
-    config.before(:each) do
-      DatabaseCleaner.start
-    end
-
-    config.after(:each) do
-      DatabaseCleaner.clean
-    end
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
   config.infer_spec_type_from_file_location!
 end

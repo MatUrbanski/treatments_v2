@@ -1,11 +1,12 @@
 require "rails_helper"
 
 feature "Ordering units" do
-  let!(:ordering_unit)  { create(:ordering_unit) }
+  let!(:ordering_unit)  { create(:ordering_unit, name: "Ordering unit") }
+  let!(:ordering_unit2)  { create(:ordering_unit, name: "Test ordering unit") }
+  before { visit ordering_units_path }
 
   feature "Create" do
     before do
-      visit ordering_units_path
       click_link t('ordering_units.index.new_ordering_unit')
     end
 
@@ -29,8 +30,7 @@ feature "Ordering units" do
 
   feature "Update" do
     before do
-      visit ordering_units_path
-      click_link t('ordering_units.ordering_unit.edit_ordering_unit')
+      click_link t('ordering_units.ordering_unit.edit_ordering_unit'), match: :first
     end
 
     scenario "should update existing Ordering Unit" do
@@ -54,8 +54,7 @@ feature "Ordering units" do
 
   feature "Deleting ordering unit that not have any associated records" do
     before do
-      visit ordering_units_path
-      click_link t('ordering_units.ordering_unit.destroy_ordering_unit')
+      click_link t('ordering_units.ordering_unit.destroy_ordering_unit'), match: :first
     end
 
     scenario "should delete existing ordering unit" do
@@ -66,10 +65,17 @@ feature "Ordering units" do
   feature "Deleting ordering unit that have associated records" do
     let!(:doctor) { create(:doctor, ordering_unit: ordering_unit) }
     scenario "should not delete existing ordering unit" do
-      visit ordering_units_path
-      click_link t('ordering_units.ordering_unit.destroy_ordering_unit')
+      click_link t('ordering_units.ordering_unit.destroy_ordering_unit'), match: :first
 
       expect(page).to have_text(t('ordering_units.has_doctors_or_treatments'))
+    end
+  end
+
+  feature "Searching" do
+    scenario "Should find proper ordering units", js: true do
+      fill_in "search_form_query", with: "Test"
+      expect(page).to have_text(ordering_unit2.name)
+      expect(page).to_not have_text(ordering_unit.name)
     end
   end
 end
