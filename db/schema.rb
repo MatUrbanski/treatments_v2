@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141217194722) do
+ActiveRecord::Schema.define(version: 20141226175645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,11 @@ ActiveRecord::Schema.define(version: 20141217194722) do
   end
 
   add_index "treatment_types_groups", ["name"], name: "index_treatment_types_groups_on_name", unique: true, using: :btree
+
+  create_table "visitation_times", force: :cascade do |t|
+    t.date   "day",         null: false
+    t.string "time_of_day", null: false
+  end
 
   add_foreign_key "doctors", "ordering_units"
   add_foreign_key "treatment_types", "treatment_types_groups"
