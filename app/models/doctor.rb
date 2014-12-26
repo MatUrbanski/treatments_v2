@@ -1,11 +1,13 @@
 class Doctor < ActiveRecord::Base
-  has_one :address, as: :addressable, dependent: :destroy
+  include AddressableConcern
+  default_scope { includes(:address, :ordering_unit) }
+
   belongs_to :ordering_unit
 
   validates :specialization, :ordering_unit, presence: true
   validates :fullname, presence: true, uniqueness: true
 
-  accepts_nested_attributes_for :address
+  delegate :name, to: :ordering_unit, prefix: true
 
   def self.search(query)
     query = "%#{query}%"

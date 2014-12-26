@@ -7,6 +7,6 @@ describe "treatment_types/index" do
 
   it "proper displays all information about doctor" do
     expect(page).to have_content treatment_type.name
-    expect(page).to have_content treatment_type.treatment_types_group.name
+    expect(page).to have_content treatment_type.treatment_types_group_name
   end
 end

@@ -8,7 +8,7 @@ describe "ordering_units/index" do
 
   it "proper displays all information about ordering unit" do
     expect(page).to have_content ordering_unit.name
-    expect(page).to have_content ordering_unit.address.to_formatted_s
+    expect(page).to have_content ordering_unit.address_to_formatted_s
     expect(page).to have_content ordering_unit.doctors.count
   end
 end

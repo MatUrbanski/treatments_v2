@@ -28,22 +28,22 @@ describe Patient do
 
     context "address street" do
       it "should find proper patients" do
-        expect(Patient.search(patient.address.street)).to match_array patient
+        expect(Patient.search(patient.address_street)).to match_array patient
         expect(Patient.search(patient2.address.street)).to match_array patient2
       end
     end
 
     context "address city" do
       it "should find proper patients" do
-        expect(Patient.search(patient.address.city)).to match_array patient
-        expect(Patient.search(patient2.address.city)).to match_array patient2
+        expect(Patient.search(patient.address_city)).to match_array patient
+        expect(Patient.search(patient2.address_city)).to match_array patient2
       end
     end
 
     context "address zip_code" do
       it "should find proper patients" do
-        expect(Patient.search(patient.address.zip_code)).to match_array patient
-        expect(Patient.search(patient2.address.zip_code)).to match_array patient2
+        expect(Patient.search(patient.address_zip_code)).to match_array patient
+        expect(Patient.search(patient2.address_zip_code)).to match_array patient2
       end
     end
   end

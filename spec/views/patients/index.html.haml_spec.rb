@@ -11,8 +11,8 @@ describe "patients/index" do
     expect(page).to have_content patient_without_pesel.fullname
     expect(page).to have_content patient.pesel
     expect(page).to have_content(t('patients.pesel_alert'))
-    expect(page).to have_content patient.address.to_formatted_s
-    expect(page).to have_content patient_without_pesel.address.to_formatted_s
+    expect(page).to have_content patient.address_to_formatted_s
+    expect(page).to have_content patient_without_pesel.address_to_formatted_s
     expect(page).to have_content(t('sex.male'))
     expect(page).to have_content(t('sex.female'))
     expect(page).to have_content patient.birth_date

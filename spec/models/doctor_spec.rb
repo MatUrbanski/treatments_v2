@@ -7,8 +7,8 @@ describe Doctor do
   describe ".search" do
     context "using fullname" do
       it "should find proper doctors" do
-        expect(Doctor.search("Doctor")).to match_array doctor
-        expect(Doctor.search("Test")).to match_array doctor2
+        expect(Doctor.search(doctor.fullname)).to match_array doctor
+        expect(Doctor.search(doctor2.fullname)).to match_array doctor2
       end
     end
 
@@ -21,22 +21,22 @@ describe Doctor do
 
     context "address street" do
       it "should find proper doctors" do
-        expect(Doctor.search(doctor.address.street)).to match_array doctor
-        expect(Doctor.search(doctor2.address.street)).to match_array doctor2
+        expect(Doctor.search(doctor.address_street)).to match_array doctor
+        expect(Doctor.search(doctor2.address_street)).to match_array doctor2
       end
     end
 
     context "address city" do
       it "should find proper doctors" do
-        expect(Doctor.search(doctor.address.city)).to match_array doctor
-        expect(Doctor.search(doctor2.address.city)).to match_array doctor2
+        expect(Doctor.search(doctor.address_city)).to match_array doctor
+        expect(Doctor.search(doctor2.address_city)).to match_array doctor2
       end
     end
 
     context "address zip_code" do
       it "should find proper doctors" do
-        expect(Doctor.search(doctor.address.zip_code)).to match_array doctor
-        expect(Doctor.search(doctor2.address.zip_code)).to match_array doctor2
+        expect(Doctor.search(doctor.address_zip_code)).to match_array doctor
+        expect(Doctor.search(doctor2.address_zip_code)).to match_array doctor2
       end
     end
   end

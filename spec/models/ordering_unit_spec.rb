@@ -29,22 +29,22 @@ describe OrderingUnit do
 
     context "address street" do
       it "should find proper doctors" do
-        expect(OrderingUnit.search(ordering_unit.address.street)).to match_array ordering_unit
-        expect(OrderingUnit.search(ordering_unit2.address.street)).to match_array ordering_unit2
+        expect(OrderingUnit.search(ordering_unit.address_street)).to match_array ordering_unit
+        expect(OrderingUnit.search(ordering_unit2.address_street)).to match_array ordering_unit2
       end
     end
 
     context "address city" do
       it "should find proper doctors" do
-        expect(OrderingUnit.search(ordering_unit.address.city)).to match_array ordering_unit
-        expect(OrderingUnit.search(ordering_unit2.address.city)).to match_array ordering_unit2
+        expect(OrderingUnit.search(ordering_unit.address_city)).to match_array ordering_unit
+        expect(OrderingUnit.search(ordering_unit2.address_city)).to match_array ordering_unit2
       end
     end
 
     context "address zip_code" do
       it "should find proper doctors" do
-        expect(OrderingUnit.search(ordering_unit.address.zip_code)).to match_array ordering_unit
-        expect(OrderingUnit.search(ordering_unit2.address.zip_code)).to match_array ordering_unit2
+        expect(OrderingUnit.search(ordering_unit.address_zip_code)).to match_array ordering_unit
+        expect(OrderingUnit.search(ordering_unit2.address_zip_code)).to match_array ordering_unit2
       end
     end
   end

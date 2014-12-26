@@ -17,6 +17,7 @@ gem "enumerize"
 gem "date_validator"
 gem 'kaminari'
 gem 'virtus'
+gem "bullet"
 
 group :development, :test do
   gem 'rspec-rails'
