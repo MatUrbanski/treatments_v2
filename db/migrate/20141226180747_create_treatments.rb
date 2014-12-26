@@ -6,7 +6,7 @@ class CreateTreatments < ActiveRecord::Migration
       t.references :treatment_type, index: true
       t.string :medicine
 
-      t.timestamps null: false
+      t.timestamps
     end
     add_foreign_key :treatments, :patients
     add_foreign_key :treatments, :doctors

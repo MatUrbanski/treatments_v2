@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141226180747) do
+ActiveRecord::Schema.define(version: 20141226180821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,16 @@ ActiveRecord::Schema.define(version: 20141226180747) do
   add_index "patients", ["fullname"], name: "index_patients_on_fullname", unique: true, using: :btree
   add_index "patients", ["pesel"], name: "index_patients_on_pesel", unique: true, using: :btree
 
+  create_table "treatment_times", force: :cascade do |t|
+    t.integer  "visitation_time_id"
+    t.integer  "treatment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "treatment_times", ["treatment_id"], name: "index_treatment_times_on_treatment_id", using: :btree
+  add_index "treatment_times", ["visitation_time_id"], name: "index_treatment_times_on_visitation_time_id", using: :btree
+
   create_table "treatment_types", force: :cascade do |t|
     t.string   "name"
     t.integer  "treatment_types_group_id"
@@ -85,8 +95,8 @@ ActiveRecord::Schema.define(version: 20141226180747) do
     t.integer  "doctor_id"
     t.integer  "treatment_type_id"
     t.string   "medicine"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "treatments", ["doctor_id"], name: "index_treatments_on_doctor_id", using: :btree
@@ -99,6 +109,8 @@ ActiveRecord::Schema.define(version: 20141226180747) do
   end
 
   add_foreign_key "doctors", "ordering_units"
+  add_foreign_key "treatment_times", "treatments"
+  add_foreign_key "treatment_times", "visitation_times"
   add_foreign_key "treatment_types", "treatment_types_groups"
   add_foreign_key "treatments", "doctors"
   add_foreign_key "treatments", "patients"
