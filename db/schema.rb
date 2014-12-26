@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141226175645) do
+ActiveRecord::Schema.define(version: 20141226180747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,19 @@ ActiveRecord::Schema.define(version: 20141226175645) do
 
   add_index "treatment_types_groups", ["name"], name: "index_treatment_types_groups_on_name", unique: true, using: :btree
 
+  create_table "treatments", force: :cascade do |t|
+    t.integer  "patient_id"
+    t.integer  "doctor_id"
+    t.integer  "treatment_type_id"
+    t.string   "medicine"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "treatments", ["doctor_id"], name: "index_treatments_on_doctor_id", using: :btree
+  add_index "treatments", ["patient_id"], name: "index_treatments_on_patient_id", using: :btree
+  add_index "treatments", ["treatment_type_id"], name: "index_treatments_on_treatment_type_id", using: :btree
+
   create_table "visitation_times", force: :cascade do |t|
     t.date   "day",         null: false
     t.string "time_of_day", null: false
@@ -87,4 +100,7 @@ ActiveRecord::Schema.define(version: 20141226175645) do
 
   add_foreign_key "doctors", "ordering_units"
   add_foreign_key "treatment_types", "treatment_types_groups"
+  add_foreign_key "treatments", "doctors"
+  add_foreign_key "treatments", "patients"
+  add_foreign_key "treatments", "treatment_types"
 end
