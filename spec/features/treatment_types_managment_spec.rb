@@ -52,7 +52,7 @@ feature "Treatment types" do
       click_button t('submit')
 
       expect(page).to_not have_text(t('treatment_types.updated'))
-      expect(current_path).to eq treatment_type_path(treatment_type)
+      expect(current_path).to eq treatment_type_path(treatment_type2)
     end
   end
 
@@ -66,7 +66,7 @@ feature "Treatment types" do
 
   feature "Searching" do
     scenario "Should find proper treatment types", js: true do
-      fill_in "search_form_query", with: "Name"
+      fill_in "search_form_query", with: treatment_type.name
       expect(page).to have_text(treatment_type.name)
       expect(page).to_not have_text(treatment_type2.name)
     end

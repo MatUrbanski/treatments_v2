@@ -70,10 +70,10 @@ feature "Doctors" do
   end
 
   feature "Searching" do
-    scenario "Should find proper doctors", js: true do
-      fill_in "search_form_query", with: "Test"
-      expect(page).to have_text(doctor2.fullname)
-      expect(page).to_not have_text(doctor.fullname)
+    scenario "should find proper doctors", js: true do
+      fill_in "search_form_query", with: doctor.fullname
+      expect(page).to have_text(doctor.fullname)
+      expect(page).to_not have_text(doctor2.fullname)
     end
   end
 end

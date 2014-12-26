@@ -12,11 +12,39 @@ describe Patient do
   end
 
   describe ".search" do
-    it "should find proper TreatmentType" do
-      expect(Patient.search("1234")).to match_array patient
-      expect(Patient.search("098")).to match_array patient2
-      expect(Patient.search("Patient")).to match_array patient
-      expect(Patient.search("Test")).to match_array patient2
+    context "using fullname" do
+      it "should find proper Patient" do
+        expect(Patient.search(patient.fullname)).to match_array patient
+        expect(Patient.search(patient2.fullname)).to match_array patient2
+      end
+    end
+
+    context "using pesel" do
+      it "should find proper patients" do
+        expect(Patient.search(patient.pesel)).to match_array patient
+        expect(Patient.search(patient2.pesel)).to match_array patient2
+      end
+    end
+
+    context "address street" do
+      it "should find proper patients" do
+        expect(Patient.search(patient.address.street)).to match_array patient
+        expect(Patient.search(patient2.address.street)).to match_array patient2
+      end
+    end
+
+    context "address city" do
+      it "should find proper patients" do
+        expect(Patient.search(patient.address.city)).to match_array patient
+        expect(Patient.search(patient2.address.city)).to match_array patient2
+      end
+    end
+
+    context "address zip_code" do
+      it "should find proper patients" do
+        expect(Patient.search(patient.address.zip_code)).to match_array patient
+        expect(Patient.search(patient2.address.zip_code)).to match_array patient2
+      end
     end
   end
 end

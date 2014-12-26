@@ -12,6 +12,8 @@ class OrderingUnit < ActiveRecord::Base
 
   def self.search(query)
     query = "%#{query}%"
-    where("name LIKE ? ", query)
+    joins(:address).where("name LIKE ? OR addresses.street LIKE ?
+      OR addresses.city LIKE ?OR addresses.zip_code LIKE ?",
+      query, query, query, query)
   end
 end

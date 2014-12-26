@@ -9,6 +9,8 @@ class Doctor < ActiveRecord::Base
 
   def self.search(query)
     query = "%#{query}%"
-    where("fullname LIKE ? OR specialization LIKE ?", query, query)
+    joins(:address, :ordering_unit).where("fullname LIKE ? OR specialization LIKE ?
+      OR addresses.street LIKE ? OR addresses.city LIKE ? OR addresses.zip_code LIKE ?
+      OR ordering_units.name LIKE ?", query, query, query, query, query, query)
   end
 end

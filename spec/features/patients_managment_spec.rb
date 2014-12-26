@@ -88,9 +88,9 @@ feature "Patients" do
 
    feature "Searching" do
     scenario "Should find proper patients", js: true do
-      fill_in "search_form_query", with: "Test"
-      expect(page).to have_text(patient2.fullname)
-      expect(page).to_not have_text(patient.fullname)
+      fill_in "search_form_query", with: patient.fullname
+      expect(page).to have_text(patient.fullname)
+      expect(page).to_not have_text(patient2.fullname)
     end
   end
 end

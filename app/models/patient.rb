@@ -19,6 +19,8 @@ class Patient < ActiveRecord::Base
 
   def self.search(query)
     query = "%#{query}%"
-    where("fullname LIKE ? OR pesel LIKE ?", query, query)
+    joins(:address).where("fullname LIKE ? OR pesel LIKE ?
+      OR addresses.street LIKE ? OR addresses.city LIKE ?
+      OR addresses.zip_code LIKE ?", query, query, query, query, query)
   end
 end

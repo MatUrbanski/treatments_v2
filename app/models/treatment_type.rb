@@ -6,6 +6,7 @@ class TreatmentType < ActiveRecord::Base
 
   def self.search(query)
     query = "%#{query}%"
-    where("name LIKE ?", query)
+    joins(:treatment_types_group).where("treatment_types.name LIKE ?
+      OR treatment_types_groups.name LIKE ?", query, query)
   end
 end

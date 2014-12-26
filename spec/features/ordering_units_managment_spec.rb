@@ -73,9 +73,9 @@ feature "Ordering units" do
 
   feature "Searching" do
     scenario "Should find proper ordering units", js: true do
-      fill_in "search_form_query", with: "Test"
-      expect(page).to have_text(ordering_unit2.name)
-      expect(page).to_not have_text(ordering_unit.name)
+      fill_in "search_form_query", with: ordering_unit.name
+      expect(page).to have_text(ordering_unit.name)
+      expect(page).to_not have_text(ordering_unit2.name)
     end
   end
 end
