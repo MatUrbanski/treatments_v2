@@ -4,7 +4,7 @@
   %td= patient.address_to_formatted_s
   %td= t("sex.#{patient.sex}")
   %td= patient.birth_date
-  %td
+  %td= patient.treatments_count
   %td
     .dropdown
       %button.btn.btn-info.btn-sm{"aria-expanded" => "true",

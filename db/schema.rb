@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141226180821) do
+ActiveRecord::Schema.define(version: 20141226231049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,32 +31,35 @@ ActiveRecord::Schema.define(version: 20141226180821) do
   add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
 
   create_table "doctors", force: :cascade do |t|
-    t.string   "fullname",         null: false
-    t.string   "specialization",   null: false
-    t.integer  "ordering_unit_id", null: false
+    t.string   "fullname",                     null: false
+    t.string   "specialization",               null: false
+    t.integer  "ordering_unit_id",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "treatments_count", default: 0
   end
 
   add_index "doctors", ["fullname"], name: "index_doctors_on_fullname", unique: true, using: :btree
   add_index "doctors", ["ordering_unit_id"], name: "index_doctors_on_ordering_unit_id", using: :btree
 
   create_table "ordering_units", force: :cascade do |t|
-    t.string   "name",       null: false
+    t.string   "name",                      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "doctors_count", default: 0
   end
 
   add_index "ordering_units", ["name"], name: "index_ordering_units_on_name", unique: true, using: :btree
 
   create_table "patients", force: :cascade do |t|
-    t.string   "fullname",                      null: false
+    t.string   "fullname",                         null: false
     t.string   "pesel"
-    t.string   "sex",                           null: false
+    t.string   "sex",                              null: false
     t.date     "birth_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "without_pesel", default: false
+    t.boolean  "without_pesel",    default: false
+    t.integer  "treatments_count", default: 0
   end
 
   add_index "patients", ["fullname"], name: "index_patients_on_fullname", unique: true, using: :btree
@@ -77,6 +80,7 @@ ActiveRecord::Schema.define(version: 20141226180821) do
     t.integer  "treatment_types_group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "treatments_count",         default: 0
   end
 
   add_index "treatment_types", ["name"], name: "index_treatment_types_on_name", unique: true, using: :btree
@@ -97,6 +101,9 @@ ActiveRecord::Schema.define(version: 20141226180821) do
     t.string   "medicine"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "patients_count",        default: 0
+    t.integer  "doctors_count",         default: 0
+    t.integer  "treatment_types_count", default: 0
   end
 
   add_index "treatments", ["doctor_id"], name: "index_treatments_on_doctor_id", using: :btree

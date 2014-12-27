@@ -4,6 +4,8 @@ class Patient < ActiveRecord::Base
   paginates_per 10
   default_scope { includes(:address) }
 
+  has_many :treatments
+
   validates :sex, presence: true
   validates :fullname, presence: true, uniqueness: true
   validates :pesel, numericality: true, length: { is: 11 },

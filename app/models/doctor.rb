@@ -2,7 +2,9 @@ class Doctor < ActiveRecord::Base
   include AddressableConcern
   default_scope { includes(:address, :ordering_unit) }
 
-  belongs_to :ordering_unit
+  belongs_to :ordering_unit, counter_cache: true
+
+  has_many :treatments
 
   validates :specialization, :ordering_unit, presence: true
   validates :fullname, presence: true, uniqueness: true
