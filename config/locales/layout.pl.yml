@@ -5,3 +5,4 @@ pl:
       doctors: "Lekarze"
       treatment_types: "Rodzaje zabiegów"
       patients: "Pacjenci"
+      treatments: "Zabiegi"

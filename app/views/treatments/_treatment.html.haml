@@ -1,0 +1,19 @@
+%tr
+  %td= treatment.patient_fullname_with_pesel
+  %td= treatment.doctor_fullname_with_specialization
+  %td= treatment.treatment_type_name
+  %td= treatment.medicine
+  %td= treatment.visitation_times.count
+  %td
+    .dropdown
+      %button.btn.btn-info.btn-sm{"aria-expanded" => "true",
+      "data-toggle" => "dropdown", :type => "button"}
+        = Treatment.human_attribute_name :options
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          = link_to t('.edit_treatment'),
+            [:edit, treatment]
+        %li
+          = link_to t('.destroy_treatment'), treatment,
+            method: :delete

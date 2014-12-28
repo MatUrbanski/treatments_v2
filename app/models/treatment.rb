@@ -1,8 +1,23 @@
 class Treatment < ActiveRecord::Base
+  default_scope { includes(:patient, :doctor, :treatment_type) }
+
   belongs_to :patient, counter_cache: true
   belongs_to :doctor, counter_cache: true
   belongs_to :treatment_type, counter_cache: true
 
   has_many :treatment_times
   has_many :visitation_times, through: :treatment_times
+
+  validates :patient, :doctor, :treatment_type, presence: true
+
+  delegate :fullname_with_pesel, to: :patient, prefix: true
+  delegate :fullname_with_specialization, to: :doctor, prefix: true
+  delegate :name, to: :treatment_type, prefix: true
+
+  def self.search(query)
+    query = "%#{query}%"
+    joins(:patient, :doctor, :treatment_type).where("patients.fullname LIKE ? OR
+      patients.pesel LIKE ? OR doctors.fullname LIKE ? OR doctors.specialization LIKE ? OR
+      treatment_types.name LIKE ? OR medicine LIKE ?", query, query, query, query, query, query)
+  end
 end

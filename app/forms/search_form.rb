@@ -25,4 +25,8 @@ class SearchForm
   def patients_search
     Patient.search(query)
   end
+
+  def treatments_search
+    Treatment.search(query)
+  end
 end

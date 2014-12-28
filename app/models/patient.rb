@@ -14,14 +14,18 @@ class Patient < ActiveRecord::Base
 
   enumerize :sex, in: [:male, :female]
 
-  def without_pesel?
-    without_pesel == true
-  end
-
   def self.search(query)
     query = "%#{query}%"
     joins(:address).where("fullname LIKE ? OR pesel LIKE ?
       OR addresses.street LIKE ? OR addresses.city LIKE ?
       OR addresses.zip_code LIKE ?", query, query, query, query, query)
+  end
+
+  def without_pesel?
+    without_pesel == true
+  end
+
+  def fullname_with_pesel
+    "#{fullname} - #{pesel}"
   end
 end

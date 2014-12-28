@@ -17,4 +17,8 @@ class Doctor < ActiveRecord::Base
       OR addresses.street LIKE ? OR addresses.city LIKE ? OR addresses.zip_code LIKE ?
       OR ordering_units.name LIKE ?", query, query, query, query, query, query)
   end
+
+  def fullname_with_specialization
+    "#{fullname} - #{specialization}"
+  end
 end

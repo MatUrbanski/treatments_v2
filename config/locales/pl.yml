@@ -2,6 +2,8 @@ pl:
   submit: "Zapisz"
   saving: "Zapisuję..."
   search_placeholder: "Wyszukaj"
+  morning: "rano"
+  evening: "wieczorem"
   sex:
     male: "Mężczyzna"
     female: "Kobieta"

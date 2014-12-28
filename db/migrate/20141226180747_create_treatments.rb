@@ -1,9 +1,9 @@
 class CreateTreatments < ActiveRecord::Migration
   def change
     create_table :treatments do |t|
-      t.references :patient, index: true
-      t.references :doctor, index: true
-      t.references :treatment_type, index: true
+      t.references :patient, index: true, null: false
+      t.references :doctor, index: true, null: false
+      t.references :treatment_type, index: true, null: false
       t.string :medicine
 
       t.timestamps

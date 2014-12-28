@@ -1,0 +1,16 @@
+pl:
+  treatments:
+    created: "Zabieg został dodany"
+    updated: "Zabieg został zaktualizowany"
+    destroyed: "Zabieg został usunięty"
+    index:
+      title: "Zabiegi"
+      new_treatment: "Nowy zabieg"
+      search_placeholder: "Wyszukaj zabieg"
+    treatment:
+      edit_treatment: "Edytuj"
+      destroy_treatment: "Usuń"
+    new:
+      title: "Nowy zabieg"
+    edit:
+      title: "Edycja zabiegu"

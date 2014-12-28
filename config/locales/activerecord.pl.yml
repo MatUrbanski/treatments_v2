@@ -38,3 +38,10 @@ pl:
         treatments_count: "Liczba zabiegów"
         without_pesel: "Zapisz bez numeru PESEL"
         options: "Opcje"
+      treatment:
+        patient: "Pacjent"
+        doctor: "Lekarz"
+        treatment_type: "Rodzaj zabiegu"
+        visitation_times: "Dni"
+        medicine: "Lek"
+        options: "Opcje"

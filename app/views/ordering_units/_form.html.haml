@@ -1,6 +1,7 @@
-= simple_form_for @ordering_unit do |f|
-  .col-md-4
-    = f.input :name
-    = field_set_tag t('.address')
-    = render 'address/form', f: f
-    = submit_button(f)
+.row
+  = simple_form_for @ordering_unit do |f|
+    .col-md-4
+      = f.input :name
+      = field_set_tag t('.address')
+      = render 'address/form', f: f
+      = submit_button(f)

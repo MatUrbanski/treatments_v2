@@ -95,9 +95,9 @@ ActiveRecord::Schema.define(version: 20141226231049) do
   add_index "treatment_types_groups", ["name"], name: "index_treatment_types_groups_on_name", unique: true, using: :btree
 
   create_table "treatments", force: :cascade do |t|
-    t.integer  "patient_id"
-    t.integer  "doctor_id"
-    t.integer  "treatment_type_id"
+    t.integer  "patient_id",                        null: false
+    t.integer  "doctor_id",                         null: false
+    t.integer  "treatment_type_id",                 null: false
     t.string   "medicine"
     t.datetime "created_at"
     t.datetime "updated_at"
