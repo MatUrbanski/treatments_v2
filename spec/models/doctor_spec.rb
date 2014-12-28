@@ -40,4 +40,10 @@ describe Doctor do
       end
     end
   end
+
+  describe "#fullname_with_specialization" do
+    it "should return patietn fullname with pesesl" do
+      expect(doctor.fullname_with_specialization).to eq "#{doctor.fullname} - #{doctor.specialization}"
+    end
+  end
 end
