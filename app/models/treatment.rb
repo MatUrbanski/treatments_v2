@@ -1,11 +1,11 @@
 class Treatment < ActiveRecord::Base
-  default_scope { includes(:patient, :doctor, :treatment_type) }
+  default_scope { includes(:patient, :doctor, :treatment_type, :visitation_times) }
 
   belongs_to :patient, counter_cache: true
   belongs_to :doctor, counter_cache: true
   belongs_to :treatment_type, counter_cache: true
 
-  has_many :treatment_times
+  has_many :treatment_times, dependent: :destroy
   has_many :visitation_times, through: :treatment_times
 
   validates :patient, :doctor, :treatment_type, presence: true

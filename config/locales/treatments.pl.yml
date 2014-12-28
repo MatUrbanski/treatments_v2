@@ -10,6 +10,7 @@ pl:
     treatment:
       edit_treatment: "Edytuj"
       destroy_treatment: "Usuń"
+      see_days: "Zobacz dni"
     new:
       title: "Nowy zabieg"
     edit:

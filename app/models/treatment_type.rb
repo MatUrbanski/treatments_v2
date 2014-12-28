@@ -15,4 +15,8 @@ class TreatmentType < ActiveRecord::Base
     joins(:treatment_types_group).where("treatment_types.name LIKE ?
       OR treatment_types_groups.name LIKE ?", query, query)
   end
+
+  def name_with_group_name
+    "#{name} - #{treatment_types_group.name}"
+  end
 end

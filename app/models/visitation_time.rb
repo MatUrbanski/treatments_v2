@@ -8,7 +8,8 @@ class VisitationTime < ActiveRecord::Base
   validates :day, :time_of_day, presence: true
 
   def day_with_time_of_day
-    "#{day} #{human_time_of_day}"
+    day_name =  I18n.t(:"date.day_names")[day.wday]
+    "#{day} - #{day_name} #{human_time_of_day}"
   end
 
   def human_time_of_day

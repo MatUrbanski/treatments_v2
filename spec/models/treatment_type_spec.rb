@@ -19,4 +19,10 @@ describe TreatmentType do
       end
     end
   end
+
+  describe "#name_with_group_name" do
+    it "should return treatment type with treatment type group name" do
+      expect(treatment_type.name_with_group_name).to eq "#{treatment_type.name} - #{treatment_type.treatment_types_group.name}"
+    end
+  end
 end

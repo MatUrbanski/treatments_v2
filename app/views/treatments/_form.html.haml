@@ -3,7 +3,7 @@
     .col-md-4
       = f.association :patient, label_method: :fullname
       = f.association :doctor, as: :radio_buttons, label_method: :fullname
-      = f.association :treatment_type, as: :radio_buttons
+      = f.association :treatment_type, as: :radio_buttons, label_method: :name_with_group_name
       = f.input :medicine
       = f.association :visitation_times, as: :check_boxes, collection: VisitationTime.nearest_days(40.days, 10.days), label_method: :day_with_time_of_day
       = submit_button(f)

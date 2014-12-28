@@ -49,7 +49,7 @@ describe Patient do
   end
 
   describe "#fullname_with_pesel" do
-    it "should return patietn fullname with pesesl" do
+    it "should return patient fullname with pesel" do
       expect(patient.fullname_with_pesel).to eq "#{patient.fullname} - #{patient.pesel}"
     end
   end
