@@ -1,4 +1,5 @@
 class Treatment < ActiveRecord::Base
+  attr_accessor :patient_find
   default_scope { includes(:patient, :doctor, :treatment_type, :visitation_times) }
 
   belongs_to :patient, counter_cache: true
@@ -9,6 +10,7 @@ class Treatment < ActiveRecord::Base
   has_many :visitation_times, through: :treatment_times
 
   validates :patient, :doctor, :treatment_type, presence: true
+  validate :patient_find
 
   delegate :fullname_with_pesel, to: :patient, prefix: true
   delegate :fullname_with_specialization, to: :doctor, prefix: true
@@ -19,5 +21,12 @@ class Treatment < ActiveRecord::Base
     joins(:patient, :doctor, :treatment_type).where("patients.fullname LIKE ? OR
       patients.pesel LIKE ? OR doctors.fullname LIKE ? OR doctors.specialization LIKE ? OR
       treatment_types.name LIKE ? OR medicine LIKE ?", query, query, query, query, query, query)
+  end
+
+  def patient_find
+    if patient_id.nil?
+      errors[:patient_find] <<
+        I18n.t('.activerecord.errors.models.treatment.attributes.patient_find.blank')
+    end
   end
 end

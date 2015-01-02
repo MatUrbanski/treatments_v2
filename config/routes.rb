@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   resources :ordering_units
   resources :doctors
   resources :treatment_types
-  resources :patients
+  resources :patients do
+    collection do
+      get :autocomplete
+    end
+  end
   resources :treatments
 end

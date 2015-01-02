@@ -35,6 +35,11 @@ class PatientsController < ApplicationController
     redirect_to :patients
   end
 
+  def autocomplete
+    @patients = Patient.search(params[:term])
+    render json: @patients.map{ |x| {label: x.fullname_with_pesel, id: x.id} }
+  end
+
   private
 
   def set_patient

@@ -1,7 +1,11 @@
 .row
   = simple_form_for @treatment do |f|
     .col-md-4
-      = f.association :patient, label_method: :fullname
+      = f.input :patient_find, as: :string, label_method: :fullname, input_html: { data: {autocomplete_source: autocomplete_patients_path}, value: patient_find_value }
+      %a.change_patient= t('.change_patient')
+      %br/
+      %br/
+      = f.input :patient_id, as: :hidden
       = f.association :doctor, as: :radio_buttons, label_method: :fullname
       = f.association :treatment_type, as: :radio_buttons, label_method: :name_with_group_name
       = f.input :medicine

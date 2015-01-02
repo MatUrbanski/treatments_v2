@@ -18,6 +18,8 @@ gem "date_validator"
 gem 'kaminari'
 gem 'virtus'
 gem "bullet"
+gem 'jquery-ui-rails'
+gem 'quiet_assets', group: :development
 
 group :development, :test do
   gem 'rspec-rails'

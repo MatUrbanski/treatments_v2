@@ -15,3 +15,5 @@ pl:
       title: "Nowy zabieg"
     edit:
       title: "Edycja zabiegu"
+    form:
+      change_patient: "Zmień pacjenta"

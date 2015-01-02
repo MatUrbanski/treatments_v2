@@ -26,6 +26,7 @@ class Patient < ActiveRecord::Base
   end
 
   def fullname_with_pesel
-    "#{fullname} - #{pesel}"
+    patient_pesel = without_pesel? ? I18n.t('patients.pesel_alert') : pesel
+    "#{fullname} - #{patient_pesel}"
   end
 end

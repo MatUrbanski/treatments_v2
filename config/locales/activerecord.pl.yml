@@ -6,6 +6,10 @@ pl:
           attributes:
             birth_date:
               not_a_date: "Nieporawny format daty"
+        treatment:
+          attributes:
+            patient_find:
+              blank: "Proszę wybrać pacjenta"
     attributes:
       ordering_unit:
         name: "Nazwa"
@@ -40,6 +44,7 @@ pl:
         options: "Opcje"
       treatment:
         patient: "Pacjent"
+        patient_find: "Wyszukaj pacjenta"
         doctor: "Lekarz"
         treatment_type: "Rodzaj zabiegu"
         visitation_times: "Dni"
