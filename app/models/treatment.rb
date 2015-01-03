@@ -29,4 +29,8 @@ class Treatment < ActiveRecord::Base
         I18n.t('.activerecord.errors.models.treatment.attributes.patient_find.blank')
     end
   end
+
+  def visitation_times_count
+    visitation_times.count
+  end
 end

@@ -19,7 +19,7 @@ table td, table th {
   float: right;
 }
 
-#search{
+#search, .right{
   float: right
 }
 
@@ -27,4 +27,15 @@ table td, table th {
 
 .center{
   text-align: center;
+}
+
+.treatments_count{
+  position: fixed;
+  top: 470px;
+  right: 100px;
+  width: 350px;
+}
+
+.left{
+  margin-left: 20px;
 }

@@ -12,6 +12,8 @@
         - treatment.visitation_times.each do |visitation_time|
           %li
             %a= visitation_time.day
+        %br/
+        %p.left= "Suma: #{treatment.visitation_times_count}"
   %td
     .dropdown
       %button.btn.btn-info.btn-sm{"aria-expanded" => "true",
