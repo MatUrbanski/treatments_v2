@@ -8,6 +8,10 @@ pl:
   sex:
     male: "Mężczyzna"
     female: "Kobieta"
+  views:
+    pagination:
+      previous: "Poprzednia"
+      next: "Następna"
   date:
     abbr_day_names:
     - nie
