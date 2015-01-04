@@ -11,7 +11,7 @@
       %ul.dropdown-menu
         - treatment.visitation_times.each do |visitation_time|
           %li
-            %a= visitation_time.day
+            %a= visitation_time.day_with_time_of_day
         %br/
         %p.left= "#{t('.sum')} #{treatment.visitation_times_count}"
   %td

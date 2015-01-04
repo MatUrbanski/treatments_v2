@@ -10,18 +10,15 @@
               .col-xs-8.text-right
                 .huge.visitation_count 0
                 %div= t('.treatments_count')
-          %a
-          .panel-footer
-            = submit_button(f)
       .col-md-4
         = f.input :patient_find, as: :string, label_method: :fullname, input_html: { data: {autocomplete_source: autocomplete_patients_path}, value: patient_find_value }
         %a.change_patient= t('.change_patient')
         %br/
         %br/
         = f.input :patient_id, as: :hidden
-        = f.association :doctor, as: :radio_buttons, label_method: :fullname
+        = f.association :doctor, as: :radio_buttons, label_method: :fullname_with_specialization
         = f.association :treatment_type, as: :radio_buttons, label_method: :name_with_group_name
         = f.input :medicine
         #visitation_times
           = f.association :visitation_times, as: :check_boxes, collection: VisitationTime.nearest_days(40.days, 10.days), label_method: :day_with_time_of_day
-        = submit_button(f)
+        #submit= submit_button(f)
