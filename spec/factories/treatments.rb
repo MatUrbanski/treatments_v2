@@ -1,9 +1,8 @@
 FactoryGirl.define do
   factory :treatment do
-    patient nil
-doctor nil
-treatment_type nil
-medicine "MyString"
+    patient
+    doctor
+    treatment_type
+    sequence(:medicine) { |n| "medicine#{n}" }
   end
-
 end
