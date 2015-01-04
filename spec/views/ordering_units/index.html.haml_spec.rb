@@ -15,6 +15,6 @@ describe "ordering_units/index" do
     expect(page).to have_content ordering_unit.name
     expect(page).to have_content ordering_unit.address_to_formatted_s
     expect(page).to have_content ordering_unit.doctors_count
-    expect(page).to have_content ordering_unit.treatments.count
+    expect(page).to have_content ordering_unit.treatments_count
   end
 end

@@ -11,6 +11,7 @@ pl:
       edit_treatment: "Edytuj"
       destroy_treatment: "Usuń"
       see_days: "Zobacz dni"
+      sum: "Suma:"
     new:
       title: "Nowy zabieg"
     edit:

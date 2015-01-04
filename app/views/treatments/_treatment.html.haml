@@ -5,7 +5,7 @@
   %td= treatment.medicine
   %td
     .dropdown
-      %a#dropdownMenu1.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown"}
+      %a.days#dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown"}
         = t('.see_days')
         %span.caret
       %ul.dropdown-menu
@@ -13,7 +13,7 @@
           %li
             %a= visitation_time.day
         %br/
-        %p.left= "Suma: #{treatment.visitation_times_count}"
+        %p.left= "#{t('.sum')} #{treatment.visitation_times_count}"
   %td
     .dropdown
       %button.btn.btn-info.btn-sm{"aria-expanded" => "true",
