@@ -77,12 +77,22 @@ feature "Patients" do
     end
   end
 
-  feature "Delete" do
-    scenario "Should delete existing patient" do
-      visit patients_path
+  feature "Deleting patient that not have any associated records" do
+    scenario "should delete existing patient" do
       click_link t('patients.patient.destroy_patient'), match: :first
 
       expect(page).to have_text(t('patients.destroyed'))
+      expect(current_path).to eq patients_path
+    end
+  end
+
+  feature "Deleting patient that have associated records" do
+    before { create(:treatment, patient: patient) }
+    scenario "should not delete existing patient" do
+      click_link t('patients.patient.destroy_patient'), match: :first
+
+      expect(page).to have_text(t('.has_associated_records'))
+      expect(current_path).to eq patients_path
     end
   end
 

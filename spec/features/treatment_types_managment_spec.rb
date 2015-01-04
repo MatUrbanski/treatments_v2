@@ -61,6 +61,17 @@ feature "Treatment types" do
       click_link t('treatment_types.treatment_type.destroy_treatment_type'), match: :first
 
       expect(page).to have_text(t('treatment_types.destroyed'))
+      expect(current_path).to eq treatment_types_path
+    end
+  end
+
+  feature "Deleting treatment type that have associated records" do
+    before { create(:treatment, treatment_type: treatment_type2) }
+    scenario "should not delete existing treatment type" do
+      click_link t('treatment_types.treatment_type.destroy_treatment_type'), match: :first
+
+      expect(page).to have_text(t('.has_associated_records'))
+      expect(current_path).to eq treatment_types_path
     end
   end
 

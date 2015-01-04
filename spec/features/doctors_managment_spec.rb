@@ -44,12 +44,13 @@ feature "Doctors" do
       select 'Test ordering unit', from: t('activerecord.attributes.doctor.ordering_unit')
       fill_address_fields("Updated street", "Updated city", "12-345")
       click_button t('submit')
+      doctor.reload
 
       expect(page).to have_text(t('doctors.updated'))
-      expect(page).to have_content("Updated Fullname")
-      expect(page).to have_content("Updated Specialization")
-      expect(page).to have_content("Updated street, 12-345 Updated city")
-      expect(page).to have_content("Test ordering unit")
+      expect(page).to have_content(doctor.fullname)
+      expect(page).to have_content(doctor.specialization)
+      expect(page).to have_content(doctor.address_to_formatted_s)
+      expect(page).to have_content(doctor.ordering_unit_name)
     end
 
     scenario "should not update doctor" do
@@ -66,12 +67,24 @@ feature "Doctors" do
       click_link t('doctors.doctor.destroy_doctor'), match: :first
 
       expect(page).to have_text(t('doctors.destroyed'))
+      expect(current_path).to eq doctors_path
+    end
+  end
+
+  feature "Deleting doctor that have associated records" do
+    before { create(:treatment, doctor: doctor) }
+    scenario "should not delete existing Doctor" do
+      click_link t('doctors.doctor.destroy_doctor'), match: :first
+
+      expect(page).to have_text(t('.has_associated_records'))
+      expect(current_path).to eq doctors_path
     end
   end
 
   feature "Searching" do
     scenario "should find proper doctors", js: true do
       fill_in "search_form_query", with: doctor.fullname
+
       expect(page).to have_text(doctor.fullname)
       expect(page).to_not have_text(doctor2.fullname)
     end

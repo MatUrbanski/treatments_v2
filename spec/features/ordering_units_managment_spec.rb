@@ -53,27 +53,28 @@ feature "Ordering units" do
   end
 
   feature "Deleting ordering unit that not have any associated records" do
-    before do
-      click_link t('ordering_units.ordering_unit.destroy_ordering_unit'), match: :first
-    end
-
     scenario "should delete existing ordering unit" do
+      click_link t('ordering_units.ordering_unit.destroy_ordering_unit'), match: :first
+
       expect(page).to have_text(t('ordering_units.destroyed'))
+      expect(current_path).to eq ordering_units_path
     end
   end
 
   feature "Deleting ordering unit that have associated records" do
-    let!(:doctor) { create(:doctor, ordering_unit: ordering_unit) }
+    before { create(:doctor, ordering_unit: ordering_unit) }
     scenario "should not delete existing ordering unit" do
       click_link t('ordering_units.ordering_unit.destroy_ordering_unit'), match: :first
 
-      expect(page).to have_text(t('ordering_units.has_doctors_or_treatments'))
+      expect(page).to have_text(t('.has_associated_records'))
+      expect(current_path).to eq ordering_units_path
     end
   end
 
   feature "Searching" do
     scenario "Should find proper ordering units", js: true do
       fill_in "search_form_query", with: ordering_unit.name
+
       expect(page).to have_text(ordering_unit.name)
       expect(page).to_not have_text(ordering_unit2.name)
     end

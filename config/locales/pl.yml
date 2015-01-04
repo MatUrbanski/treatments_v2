@@ -4,6 +4,7 @@ pl:
   search_placeholder: "Wyszukaj"
   morning: "rano"
   evening: "wieczorem"
+  has_associated_records: "Nie można usunąć tego obiektu ponieważ inne obiekty są z nim powiązane"
   sex:
     male: "Mężczyzna"
     female: "Kobieta"
