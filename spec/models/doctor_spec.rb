@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe Doctor do
-  let!(:doctor) { create(:doctor, fullname: "Doctor", specialization: "Specialization") }
-  let!(:doctor2) { create(:doctor, fullname: "Test doctor", specialization: "Test specialization") }
+  let(:doctor) { create(:doctor, fullname: "Doctor", specialization: "Specialization") }
+  let(:doctor2) { create(:doctor, fullname: "Test doctor", specialization: "Test specialization") }
 
   describe ".search" do
     context "using fullname" do

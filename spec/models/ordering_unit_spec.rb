@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe OrderingUnit do
-  let!(:ordering_unit) { create(:ordering_unit, name: "Ordering unit") }
-  let!(:ordering_unit2) { create(:ordering_unit, name: "Test ordering unit") }
+  let(:ordering_unit) { create(:ordering_unit, name: "Ordering unit") }
+  let(:ordering_unit2) { create(:ordering_unit, name: "Test ordering unit") }
 
   describe ".search" do
     context "by name" do

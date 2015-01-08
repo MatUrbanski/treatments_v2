@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe Address do
-  let(:address) {build(:address, city: "City",
-    street: "Street", zip_code: "12-345")}
+  let(:address) { build(:address, city: "City",
+    street: "Street", zip_code: "12-345") }
 
   describe "#to_formatted_s" do
     it "should return formatted address" do
