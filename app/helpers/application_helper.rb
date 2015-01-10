@@ -17,4 +17,14 @@ module ApplicationHelper
       return render "layouts/#{key}", msg: msg
     end
   end
+
+  def start_days?(days, default)
+    if params[:start_days].present?
+      params[:start_days] == days ? "active" : nil
+    elsif params[:treatment].present?
+      params[:treatment][:start_days] == days ? "active" : nil
+    elsif default == true
+      "active"
+    end
+  end
 end

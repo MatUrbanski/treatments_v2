@@ -1,5 +1,6 @@
 .row
   = simple_form_for @treatment do |f|
+    = f.input :start_days, as: :hidden
     .col-md-12
       .right
         .panel.panel-primary.treatments_count
@@ -19,6 +20,7 @@
         = f.association :doctor, as: :radio_buttons, label_method: :fullname_with_specialization
         = f.association :treatment_type, as: :radio_buttons, label_method: :name_with_group_name
         = f.input :medicine
+        = render 'start_days' if @treatment.new_record?
         #visitation_times
-          = f.association :visitation_times, as: :check_boxes, collection: VisitationTime.nearest_days(40.days, 10.days), label_method: :day_with_time_of_day
+          = f.association :visitation_times, as: :check_boxes, collection: VisitationTime.nearest_days(@treatment.start_days.days), label_method: :day_with_time_of_day
         #submit= submit_button(f)

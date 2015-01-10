@@ -1,0 +1,11 @@
+.btn-group
+  = link_to t('.40_days'), [:new, :treatment, start_days: 40],
+    class: "btn btn-default #{start_days?('40', true)}"
+  = link_to t('.90_days'), [:new, :treatment, start_days: 90],
+    class: "btn btn-default #{start_days?('90', false)}"
+  = link_to t('.180_days'), [:new, :treatment, start_days: 180],
+    class: "btn btn-default #{start_days?('180',false)}"
+  = link_to t('.360_days'), [:new, :treatment, start_days: 360],
+    class: "btn btn-default #{start_days?('360', false)}"
+%br/
+%br/

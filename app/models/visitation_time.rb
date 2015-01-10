@@ -1,6 +1,6 @@
 class VisitationTime < ActiveRecord::Base
-  scope :nearest_days, ->(start_days, end_days) {
-    where("day >= ? and day <= ?", Date.today - start_days, Date.today + end_days) }
+  scope :nearest_days, ->(start_days) {
+    where("day >= ? and day <= ?", Date.today - start_days, Date.today) }
 
   has_many :treatment_times
   has_many :treatments, through: :treatment_times

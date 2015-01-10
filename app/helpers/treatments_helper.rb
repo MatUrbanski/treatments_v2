@@ -1,5 +1,5 @@
 module TreatmentsHelper
-  def patient_find_value()
+  def patient_find_value
     if @treatment.persisted? && @treatment.patient.present?
       @treatment.patient.fullname_with_pesel
     elsif params[:treatment].present?
@@ -8,4 +8,5 @@ module TreatmentsHelper
       nil
     end
   end
+
 end

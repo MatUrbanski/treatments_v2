@@ -1,13 +1,14 @@
 class TreatmentsController < ApplicationController
   before_action :build_treatment, only: [:new, :create]
   before_action :set_treatment, only: [:edit, :update, :destroy]
+  before_action :set_start_days, only: [:new, :create]
 
   def index
     @search_form = SearchForm.new(params[:search_form])
     @treatments = @search_form.submit('treatments_search').page(params[:page])
   end
 
-   def create
+  def create
     if @treatment.save
       flash[:success] = t('treatments.created')
       redirect_to :treatments
@@ -45,8 +46,18 @@ class TreatmentsController < ApplicationController
     end
   end
 
+  def set_start_days
+    if params[:start_days].present?
+      @treatment.start_days = params[:start_days].to_i
+    elsif params[:treatment].present?
+      @treatment.start_days = params[:treatment][:start_days].to_i
+    else
+      @treatment.start_days = 40
+    end
+  end
+
   def treatment_params
-    params.require(:treatment).permit(:patient_find, :patient_id, :doctor_id,
+    params.require(:treatment).permit(:start_days, :patient_find, :patient_id, :doctor_id,
       :treatment_type_id, :medicine, visitation_time_ids: [])
   end
 end

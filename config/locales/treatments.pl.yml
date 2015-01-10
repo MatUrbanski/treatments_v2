@@ -19,3 +19,8 @@ pl:
     form:
       change_patient: "Zmień pacjenta"
       treatments_count: "Liczba zabiegów"
+    start_days:
+      40_days: + 40 dni
+      90_days: + 90 dni
+      180_days: + 180 dni
+      360_days: + 360 dni
