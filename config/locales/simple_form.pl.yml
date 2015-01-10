@@ -3,7 +3,7 @@ pl:
     "yes": 'Tak'
     "no": 'Nie'
     required:
-      text: 'pole jest wymagane'
+      text: pole jest wymagane
       mark: '*'
     error_notification:
       default_message: "Wystąpiły błędy, proszę poprawić:"

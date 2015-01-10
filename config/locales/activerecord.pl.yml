@@ -5,48 +5,48 @@ pl:
         patient:
           attributes:
             birth_date:
-              not_a_date: "Nieporawny format daty"
+              not_a_date: Nieporawny format daty
         treatment:
           attributes:
             patient_find:
-              blank: "Proszę wybrać pacjenta"
+              blank: Proszę wybrać pacjenta
     attributes:
       ordering_unit:
-        name: "Nazwa"
-        address: "Adres"
-        doctors_count: "Liczba lekarzy"
-        treatments_count: "Liczba zabiegów"
-        options: "Opcje"
+        name: Nazwa
+        address: Adres
+        doctors_count: Liczba lekarzy
+        treatments_count: Liczba zabiegów
+        options: Opcje
       address:
-        street: "Ulica"
-        city: "Miasto"
-        zip_code: "Kod pocztowy"
+        street: Ulica
+        city: Miasto
+        zip_code: Kod pocztowy
       doctor:
-        fullname: "Imię i Nazwisko"
-        address: "Adres"
-        specialization: "Specjalizacja"
-        ordering_unit: "Jednostka kierująca"
-        treatments_count: "Liczba zabiegów"
-        options: "Opcje"
+        fullname: Imię i Nazwisko
+        address: Adres
+        specialization: Specjalizacja
+        ordering_unit: Jednostka kierująca
+        treatments_count: Liczba zabiegów
+        options: Opcje
       treatment_type:
-        name: "Nazwa"
-        treatment_types_group: "Grupa zabiegu"
-        treatments_count: "Liczba zabiegów"
-        options: "Opcje"
+        name: Nazwa
+        treatment_types_group: Grupa zabiegu
+        treatments_count: Liczba zabiegów
+        options: Opcje
       patient:
-        fullname: "Imię i Nazwisko"
-        address: "Adres"
-        pesel: "PESEL"
-        sex: "Płeć"
-        birth_date: "Data urodzenia"
-        treatments_count: "Liczba zabiegów"
-        without_pesel: "Zapisz bez numeru PESEL"
-        options: "Opcje"
+        fullname: Imię i Nazwisko
+        address: Adres
+        pesel: PESEL
+        sex: Płeć
+        birth_date: Data urodzenia
+        treatments_count: Liczba zabiegów
+        without_pesel: Zapisz bez numeru PESEL
+        options: Opcje
       treatment:
-        patient: "Pacjent"
-        patient_find: "Wyszukaj pacjenta"
-        doctor: "Lekarz"
-        treatment_type: "Rodzaj zabiegu"
-        visitation_times: "Dni"
-        medicine: "Lek"
-        options: "Opcje"
+        patient: Pacjent
+        patient_find: Wyszukaj pacjenta
+        doctor: Lekarz
+        treatment_type: Rodzaj zabiegu
+        visitation_times: Dni
+        medicine: Lek
+        options: Opcje

@@ -1,19 +1,19 @@
 pl:
   ordering_units:
-    created: "Jednostka kierująca została dodana"
-    updated: "Jednostka kierująca została zaktualizowana"
-    destroyed: "Jednostka kierująca została usunięta"
-    has_doctors_or_treatments: "Nie można usunąć jednostki która ma przypisanych lekarzy lub zabiegi"
+    created: Jednostka kierująca została dodana
+    updated: Jednostka kierująca została zaktualizowana
+    destroyed: Jednostka kierująca została usunięta
+    has_doctors_or_treatments: Nie można usunąć jednostki która ma przypisanych lekarzy lub zabiegi
     index:
-      title: "Jednostki kierujące"
-      new_ordering_unit: "Nowa jednostka kierująca"
-      search_placeholder: "Wyszukaj jednostkę kierującą"
+      title: Jednostki kierujące
+      new_ordering_unit: Nowa jednostka kierująca
+      search_placeholder: Wyszukaj jednostkę kierującą
     ordering_unit:
-      edit_ordering_unit: "Edytuj"
-      destroy_ordering_unit: "Usuń"
+      edit_ordering_unit: Edytuj
+      destroy_ordering_unit: Usuń
     new:
-      title: "Nowa jednostka kierująca"
+      title: Nowa jednostka kierująca
     form:
-      address: "Adres"
+      address: Adres
     edit:
-      title: "Edycja jednostki kierującej"
+      title: Edycja jednostki kierującej

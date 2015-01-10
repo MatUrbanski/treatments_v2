@@ -1,20 +1,20 @@
 pl:
   patients:
-    created: "Pacjent został dodany"
-    updated: "Pacjent został zaktualizowany"
-    destroyed: "Pacjent został usunięty"
-    pesel_alert: "Brak numeru pesel"
+    created: Pacjent został dodany
+    updated: Pacjent został zaktualizowany
+    destroyed: Pacjent został usunięty
+    pesel_alert: Brak numeru pesel
     index:
-      title: "Pacjenci"
-      new_patient: "Nowy pacjent"
-      search_placeholder: "Wyszukaj pacjenta"
+      title: Pacjenci
+      new_patient: Nowy pacjent
+      search_placeholder: Wyszukaj pacjenta
     patient:
-      edit_patient: "Edytuj"
-      destroy_patient: "Usuń"
+      edit_patient: Edytuj
+      destroy_patient: Usuń
     new:
-      title: "Nowy pacjent"
+      title: Nowy pacjent
     form:
-      address: "Adres"
-      date_format_hint: "yyyy-mm-dd"
+      address: Adres
+      date_format_hint: yyyy-mm-dd
     edit:
-      title: "Edycja pacjenta"
+      title: Edycja pacjenta

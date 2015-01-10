@@ -1,17 +1,17 @@
 pl:
-  submit: "Zapisz"
-  saving: "Zapisuję..."
-  search_placeholder: "Wyszukaj"
-  morning: "rano"
-  evening: "wieczorem"
-  has_associated_records: "Nie można usunąć tego obiektu ponieważ inne obiekty są z nim powiązane"
+  submit: Zapisz
+  saving: Zapisuję...
+  search_placeholder: Wyszukaj
+  morning: rano
+  evening: wieczorem
+  has_associated_records: Nie można usunąć tego obiektu ponieważ inne obiekty są z nim powiązane
   sex:
-    male: "Mężczyzna"
-    female: "Kobieta"
+    male: Mężczyzna
+    female: Kobieta
   views:
     pagination:
-      previous: "Poprzednia"
-      next: "Następna"
+      previous: Poprzednia
+      next: Następna
   date:
     abbr_day_names:
     - nie
