@@ -14,14 +14,12 @@ feature "Doctors" do
     scenario "should create new doctor" do
       fill_in t('activerecord.attributes.doctor.fullname'),       with: "Fullname"
       fill_in t('activerecord.attributes.doctor.specialization'), with: "Specialization"
-      fill_address_fields("Test street", "Test city", "12-345")
       select 'Test ordering unit', from: t('activerecord.attributes.doctor.ordering_unit')
       click_button t('submit')
 
       expect(page).to have_text(t('doctors.created'))
       expect(page).to have_content("Fullname")
       expect(page).to have_content("Specialization")
-      expect(page).to have_content("Test street, 12-345 Test city")
       expect(page).to have_content("Test ordering unit")
     end
 
@@ -42,14 +40,12 @@ feature "Doctors" do
       fill_in t('activerecord.attributes.doctor.fullname'),       with: "Updated Fullname"
       fill_in t('activerecord.attributes.doctor.specialization'), with: "Updated Specialization"
       select 'Test ordering unit', from: t('activerecord.attributes.doctor.ordering_unit')
-      fill_address_fields("Updated street", "Updated city", "12-345")
       click_button t('submit')
       doctor.reload
 
       expect(page).to have_text(t('doctors.updated'))
       expect(page).to have_content(doctor.fullname)
       expect(page).to have_content(doctor.specialization)
-      expect(page).to have_content(doctor.address_to_formatted_s)
       expect(page).to have_content(doctor.ordering_unit_name)
     end
 

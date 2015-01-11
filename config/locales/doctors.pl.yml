@@ -12,7 +12,5 @@ pl:
       destroy_doctor: Usuń
     new:
       title: Nowy lekarz
-    form:
-      address: Adres
     edit:
       title: Edycja lekarza

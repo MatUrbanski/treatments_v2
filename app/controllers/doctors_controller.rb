@@ -7,10 +7,6 @@ class DoctorsController < ApplicationController
     @doctors = @search_form.submit('doctors_search').page(params[:page])
   end
 
-  def new
-    @doctor.build_address if @doctor.address.nil?
-  end
-
   def create
     if @doctor.save
       flash[:success] = t('doctors.created')
@@ -51,6 +47,6 @@ class DoctorsController < ApplicationController
 
   def doctor_params
     params.require(:doctor).permit(:fullname, :specialization,
-      :ordering_unit_id, address_attributes: [:street, :zip_code, :city])
+     :ordering_unit_id)
   end
 end

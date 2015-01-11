@@ -18,27 +18,6 @@ describe Doctor do
         expect(Doctor.search(doctor2.specialization)).to match_array doctor2
       end
     end
-
-    context "address street" do
-      it "should find proper doctors" do
-        expect(Doctor.search(doctor.address_street)).to match_array doctor
-        expect(Doctor.search(doctor2.address_street)).to match_array doctor2
-      end
-    end
-
-    context "address city" do
-      it "should find proper doctors" do
-        expect(Doctor.search(doctor.address_city)).to match_array doctor
-        expect(Doctor.search(doctor2.address_city)).to match_array doctor2
-      end
-    end
-
-    context "address zip_code" do
-      it "should find proper doctors" do
-        expect(Doctor.search(doctor.address_zip_code)).to match_array doctor
-        expect(Doctor.search(doctor2.address_zip_code)).to match_array doctor2
-      end
-    end
   end
 
   describe "#fullname_with_specialization" do

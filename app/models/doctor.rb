@@ -1,6 +1,5 @@
 class Doctor < ActiveRecord::Base
-  include AddressableConcern
-  default_scope { includes(:address, :ordering_unit) }
+  default_scope { includes(:ordering_unit) }
 
   belongs_to :ordering_unit, counter_cache: true
 
@@ -13,9 +12,8 @@ class Doctor < ActiveRecord::Base
 
   def self.search(query)
     query = "%#{query}%"
-    joins(:address, :ordering_unit).where("fullname LIKE ? OR specialization LIKE ?
-      OR addresses.street LIKE ? OR addresses.city LIKE ? OR addresses.zip_code LIKE ?
-      OR ordering_units.name LIKE ?", query, query, query, query, query, query)
+    joins(:ordering_unit).where("fullname LIKE ? OR specialization LIKE ?
+      OR ordering_units.name LIKE ?", query, query, query)
   end
 
   def fullname_with_specialization

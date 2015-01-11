@@ -23,7 +23,6 @@ pl:
         zip_code: Kod pocztowy
       doctor:
         fullname: Imię i Nazwisko
-        address: Adres
         specialization: Specjalizacja
         ordering_unit: Jednostka kierująca
         treatments_count: Liczba zabiegów
