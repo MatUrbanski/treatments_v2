@@ -8,6 +8,7 @@ feature "Treatments" do
   let!(:treatment_type) { create(:treatment_type) }
   let!(:treatment_type2) { create(:treatment_type) }
   let!(:visitation_time) { create(:visitation_time) }
+  let!(:old_visitation_time) { create(:visitation_time, day: 3.months.ago) }
   let!(:treatment) { create(:treatment) }
   let!(:treatment2) { create(:treatment, patient: patient2) }
   before { visit treatments_path }
@@ -22,6 +23,32 @@ feature "Treatments" do
       choose(doctor.fullname_with_specialization)
       choose(treatment_type.name_with_group_name)
       check(visitation_time.day_with_time_of_day)
+      click_button t('submit')
+
+      expect(page).to have_content patient.fullname_with_pesel
+      expect(page).to have_content doctor.fullname_with_specialization
+      expect(page).to have_content treatment_type.name
+    end
+
+    scenario "should not create new treatment with invalid attributes" do
+      click_button t('submit')
+
+      expect(page).to_not have_text(t('treatments.created'))
+      expect(current_path).to eq treatments_path
+    end
+  end
+
+  feature "Create with start_days other than default" do
+    before do
+      click_link t('treatments.index.new_treatment')
+      click_link t('treatments.start_days.180_days')
+    end
+
+    scenario "should create new treatment", js: true do
+      fill_autocomplete(t('activerecord.attributes.treatment.patient_find'),  with: patient.fullname)
+      choose(doctor.fullname_with_specialization)
+      choose(treatment_type.name_with_group_name)
+      check(old_visitation_time.day_with_time_of_day)
       click_button t('submit')
 
       expect(page).to have_content patient.fullname_with_pesel

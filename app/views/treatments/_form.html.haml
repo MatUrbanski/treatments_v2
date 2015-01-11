@@ -22,5 +22,5 @@
         = f.input :medicine
         = render 'start_days' if @treatment.new_record?
         #visitation_times
-          = f.association :visitation_times, as: :check_boxes, collection: VisitationTime.nearest_days(@treatment.start_days.days), label_method: :day_with_time_of_day
+          = f.association :visitation_times, as: :check_boxes, collection: VisitationTime.nearest_days(@treatment.start_days), label_method: :day_with_time_of_day
         #submit= submit_button(f)
