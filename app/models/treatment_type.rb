@@ -1,6 +1,4 @@
 class TreatmentType < ActiveRecord::Base
-  default_scope { includes(:treatment_types_group) }
-
   belongs_to :treatment_types_group
 
   has_many :treatments

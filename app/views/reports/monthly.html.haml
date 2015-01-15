@@ -1,0 +1,25 @@
+.row
+  .col-lg-12
+    %h1.page-header= t('.title')
+= simple_form_for :monthly_report, method: :get do |f|
+  .row
+    .right
+      = select_date @date, :order => [ :month, :year], discard_day: true
+      = f.submit "Pokaz", class: 'btn btn-sm btn-default'
+.row
+  .col-md-6
+    .center= field_set_tag(t('.all_days'))
+  .col-md-6
+    .center= field_set_tag(t('.weekends'))
+.row
+  .col-md-6
+    - TreatmentTypesGroup.all.each do |treatment_group|
+      %h4.center= "#{treatment_group.name}: #{@report.treatments_total(normal_days: true, treatment_group_id: treatment_group.id)}"
+      - treatment_group.treatment_types.each do |treatment_type|
+        .center= "#{treatment_type.name}: #{@report.treatments_total(normal_days: true, treatment_type_id: treatment_type.id)}"
+  .col-md-6
+    - TreatmentTypesGroup.all.each do |treatment_group|
+      %h4.center= "#{treatment_group.name}: #{@report.treatments_total(weekends: true, treatment_group_id:  treatment_group.id)}"
+      - treatment_group.treatment_types.each do |treatment_type|
+        .center= "#{treatment_type.name}: #{@report.treatments_total(weekends: true, treatment_type_id: treatment_type.id)}"
+

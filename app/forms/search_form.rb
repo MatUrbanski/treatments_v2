@@ -19,7 +19,7 @@ class SearchForm
   end
 
   def treatment_types_search
-    TreatmentType.search(query)
+    TreatmentType.includes(:treatment_types_group).search(query)
   end
 
   def patients_search

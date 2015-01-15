@@ -1,0 +1,6 @@
+pl:
+  reports:
+    monthly:
+      title: Raport miesięczny
+      all_days: Dni powszednie
+      weekends: Weekendy

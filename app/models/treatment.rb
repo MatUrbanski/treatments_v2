@@ -15,6 +15,7 @@ class Treatment < ActiveRecord::Base
   delegate :fullname_with_pesel, to: :patient, prefix: true
   delegate :fullname_with_specialization, to: :doctor, prefix: true
   delegate :name, to: :treatment_type, prefix: true
+  delegate :treatment_types_group_id, to: :treatment_type
 
   def self.search(query)
     query = "%#{query}%"

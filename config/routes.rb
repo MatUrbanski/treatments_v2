@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     end
   end
   resources :treatments
+  get 'reports/monthly', to: "reports#monthly", as: :monthly_report
 end

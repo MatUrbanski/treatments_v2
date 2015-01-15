@@ -8,5 +8,4 @@ module TreatmentsHelper
       nil
     end
   end
-
 end
