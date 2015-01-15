@@ -18,10 +18,14 @@ class Treatment < ActiveRecord::Base
   delegate :treatment_types_group_id, to: :treatment_type
 
   def self.search(query)
-    query = "%#{query}%"
-    joins(:patient, :doctor, :treatment_type).where("patients.fullname LIKE ? OR
-      patients.pesel LIKE ? OR doctors.fullname LIKE ? OR doctors.specialization LIKE ? OR
-      treatment_types.name LIKE ? OR medicine LIKE ?", query, query, query, query, query, query)
+    if query.present?
+      query = "%#{query}%"
+      joins(:patient, :doctor, :treatment_type).where("patients.fullname LIKE ? OR
+        patients.pesel LIKE ? OR doctors.fullname LIKE ? OR doctors.specialization LIKE ? OR
+        treatment_types.name LIKE ? OR medicine LIKE ?", query, query, query, query, query, query)
+    else
+      all
+    end
   end
 
   def patient_find

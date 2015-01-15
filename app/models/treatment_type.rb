@@ -9,9 +9,13 @@ class TreatmentType < ActiveRecord::Base
   delegate :name, to: :treatment_types_group, prefix: true
 
   def self.search(query)
-    query = "%#{query}%"
-    joins(:treatment_types_group).where("treatment_types.name LIKE ?
-      OR treatment_types_groups.name LIKE ?", query, query)
+    if query.present?
+      query = "%#{query}%"
+      joins(:treatment_types_group).where("treatment_types.name LIKE ?
+        OR treatment_types_groups.name LIKE ?", query, query)
+    else
+      all
+    end
   end
 
   def name_with_group_name
