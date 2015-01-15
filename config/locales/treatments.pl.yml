@@ -1,8 +1,11 @@
 pl:
   treatments:
-    created: Zabieg został dodany
-    updated: Zabieg został zaktualizowany
-    destroyed: Zabieg został usunięty
+    create:
+      created: Zabieg został dodany
+    update:
+      updated: Zabieg został zaktualizowany
+    destroy:
+      destroyed: Zabieg został usunięty
     index:
       title: Zabiegi
       new_treatment: Nowy zabieg

@@ -13,7 +13,7 @@ class PatientsController < ApplicationController
 
   def create
     if @patient.save
-      flash[:success] = t('patients.created')
+      flash[:success] = t('.created')
       redirect_to :patients
     else
       render :new
@@ -22,7 +22,7 @@ class PatientsController < ApplicationController
 
   def update
     if @patient.update(patient_params)
-      flash[:success] = t('patients.updated')
+      flash[:success] = t('.updated')
       redirect_to :patients
     else
       render :edit
@@ -31,7 +31,7 @@ class PatientsController < ApplicationController
 
   def destroy
     @patient.destroy
-    flash[:error] = t('patients.destroyed')
+    flash[:error] = t('.destroyed')
     redirect_to :patients
   end
 

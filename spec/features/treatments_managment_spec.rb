@@ -33,7 +33,7 @@ feature "Treatments" do
     scenario "should not create new treatment with invalid attributes" do
       click_button t('submit')
 
-      expect(page).to_not have_text(t('treatments.created'))
+      expect(page).to_not have_text(t('treatments.create.created'))
       expect(current_path).to eq treatments_path
     end
   end
@@ -59,7 +59,7 @@ feature "Treatments" do
     scenario "should not create new treatment with invalid attributes" do
       click_button t('submit')
 
-      expect(page).to_not have_text(t('treatments.created'))
+      expect(page).to_not have_text(t('treatments.create.created'))
       expect(current_path).to eq treatments_path
     end
   end
@@ -77,6 +77,7 @@ feature "Treatments" do
       choose(treatment_type2.name_with_group_name)
       first(:button, t('submit')).click
 
+      expect(page).to have_text(t('treatments.update.updated'))
       expect(page).to have_content patient2.fullname_with_pesel
       expect(page).to have_content doctor2.fullname_with_specialization
       expect(page).to have_content treatment_type2.name
@@ -86,7 +87,7 @@ feature "Treatments" do
       find('.change_patient').click
       click_button t('submit')
 
-      expect(page).to_not have_text(t('treatments.updated'))
+      expect(page).to_not have_text(t('treatments.update.updated'))
       expect(current_path).to eq treatment_path(treatment)
     end
   end
@@ -95,7 +96,7 @@ feature "Treatments" do
     scenario "should delete existing treatment" do
       click_link t('treatments.treatment.destroy_treatment'), match: :first
 
-      expect(page).to have_text(t('treatments.destroyed'))
+      expect(page).to have_text(t('treatments.destroy.destroyed'))
     end
   end
 

@@ -1,8 +1,11 @@
 pl:
   ordering_units:
-    created: Jednostka kierująca została dodana
-    updated: Jednostka kierująca została zaktualizowana
-    destroyed: Jednostka kierująca została usunięta
+    create:
+      created: Jednostka kierująca została dodana
+    update:
+      updated: Jednostka kierująca została zaktualizowana
+    destroy:
+      destroyed: Jednostka kierująca została usunięta
     has_doctors_or_treatments: Nie można usunąć jednostki która ma przypisanych lekarzy lub zabiegi
     index:
       title: Jednostki kierujące

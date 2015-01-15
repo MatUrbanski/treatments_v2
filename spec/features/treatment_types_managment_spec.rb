@@ -19,7 +19,7 @@ feature "Treatment types" do
       select 'Test group', from: t('activerecord.attributes.treatment_type.treatment_types_group')
       click_button t('submit')
 
-      expect(page).to have_text(t('treatment_types.created'))
+      expect(page).to have_text(t('treatment_types.create.created'))
       expect(page).to have_content("Test group")
       expect(page).to have_content("Treatment type name")
     end
@@ -27,7 +27,7 @@ feature "Treatment types" do
     scenario "should not create new treatment type" do
       click_button t('submit')
 
-      expect(page).to_not have_text(t('treatment_types.created'))
+      expect(page).to_not have_text(t('treatment_types.create.created'))
       expect(current_path).to eq treatment_types_path
     end
   end
@@ -42,7 +42,7 @@ feature "Treatment types" do
       select 'Test group 2', from: t('activerecord.attributes.treatment_type.treatment_types_group')
       click_button t('submit')
 
-      expect(page).to have_text(t('treatment_types.updated'))
+      expect(page).to have_text(t('treatment_types.update.updated'))
       expect(page).to have_content("Test group 2")
       expect(page).to have_content("Updated treatment type name")
     end
@@ -51,8 +51,8 @@ feature "Treatment types" do
       fill_in t('activerecord.attributes.treatment_type.name'), with: nil
       click_button t('submit')
 
-      expect(page).to_not have_text(t('treatment_types.updated'))
-      expect(current_path).to eq treatment_type_path(treatment_type2)
+      expect(page).to_not have_text(t('treatment_types.update.updated'))
+      expect(current_path).to eq treatment_type_path(treatment_type)
     end
   end
 
@@ -60,16 +60,17 @@ feature "Treatment types" do
     scenario "should delete existing treatment type" do
       click_link t('treatment_types.treatment_type.destroy_treatment_type'), match: :first
 
-      expect(page).to have_text(t('treatment_types.destroyed'))
+      expect(page).to have_text(t('treatment_types.destroy.destroyed'))
       expect(current_path).to eq treatment_types_path
     end
   end
 
   feature "Deleting treatment type that have associated records" do
-    before { create(:treatment, treatment_type: treatment_type2) }
+    before { create(:treatment, treatment_type: treatment_type) }
     scenario "should not delete existing treatment type" do
-      click_link t('treatment_types.treatment_type.destroy_treatment_type'), match: :first
+      save_and_open_page
 
+      click_link t('treatment_types.treatment_type.destroy_treatment_type'), match: :first
       expect(page).to have_text(t('.has_associated_records'))
       expect(current_path).to eq treatment_types_path
     end

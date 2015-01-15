@@ -15,7 +15,7 @@ feature "Ordering units" do
       fill_address_fields("Test street", "Test city", "12-345")
       click_button t('submit')
 
-      expect(page).to have_text(t('ordering_units.created'))
+      expect(page).to have_text(t('ordering_units.create.created'))
       expect(page).to have_content("Ordering unit name")
       expect(page).to have_content("Test street, 12-345 Test city")
     end
@@ -23,7 +23,7 @@ feature "Ordering units" do
     scenario "should not create new ordering Unit" do
       click_button t('submit')
 
-      expect(page).to_not have_text(t('ordering_units.created'))
+      expect(page).to_not have_text(t('ordering_units.create.created'))
       expect(current_path).to eq ordering_units_path
     end
   end
@@ -38,7 +38,7 @@ feature "Ordering units" do
       fill_address_fields("Updated street", "Updated city", "12-345")
       click_button t('submit')
 
-      expect(page).to have_text(t('ordering_units.updated'))
+      expect(page).to have_text(t('ordering_units.update.updated'))
       expect(page).to have_content("Updated Ordering unit name")
       expect(page).to have_content("Updated street, 12-345 Updated city")
     end
@@ -47,7 +47,7 @@ feature "Ordering units" do
       fill_in t('activerecord.attributes.ordering_unit.name'), with: nil
       click_button t('submit')
 
-      expect(page).to_not have_text(t('ordering_units.updated'))
+      expect(page).to_not have_text(t('ordering_units.update.updated'))
       expect(current_path).to eq ordering_unit_path(ordering_unit)
     end
   end
@@ -56,7 +56,7 @@ feature "Ordering units" do
     scenario "should delete existing ordering unit" do
       click_link t('ordering_units.ordering_unit.destroy_ordering_unit'), match: :first
 
-      expect(page).to have_text(t('ordering_units.destroyed'))
+      expect(page).to have_text(t('ordering_units.destroy.destroyed'))
       expect(current_path).to eq ordering_units_path
     end
   end

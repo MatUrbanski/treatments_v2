@@ -9,7 +9,7 @@ class TreatmentTypesController < ApplicationController
 
   def create
     if @treatment_type.save
-      flash[:success] = t('treatment_types.created')
+      flash[:success] = t('.created')
       redirect_to :treatment_types
     else
       render :new
@@ -18,7 +18,7 @@ class TreatmentTypesController < ApplicationController
 
   def update
     if @treatment_type.update(treatment_type_params)
-      flash[:success] = t('treatment_types.updated')
+      flash[:success] = t('.updated')
       redirect_to :treatment_types
     else
       render :edit
@@ -27,7 +27,7 @@ class TreatmentTypesController < ApplicationController
 
   def destroy
     @treatment_type.destroy
-    flash[:error] = t('treatment_types.destroyed')
+    flash[:error] = t('.destroyed')
     redirect_to :treatment_types
   end
 

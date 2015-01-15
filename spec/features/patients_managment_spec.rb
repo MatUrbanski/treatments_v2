@@ -18,7 +18,7 @@ feature "Patients" do
       fill_address_fields("Test street", "Test city", "12-345")
       click_button t('submit')
 
-      expect(page).to have_text(t('patients.created'))
+      expect(page).to have_text(t('patients.create.created'))
       expect(page).to have_content("Fullname")
       expect(page).to have_content(t('sex.male'))
       expect(page).to have_content('12345678901')
@@ -33,7 +33,7 @@ feature "Patients" do
       fill_address_fields("Test street", "Test city", "12-345")
       click_button t('submit')
 
-      expect(page).to have_text(t('patients.created'))
+      expect(page).to have_text(t('patients.create.created'))
       expect(page).to have_content("Fullname")
       expect(page).to have_content(t('sex.female'))
       expect(page).to have_content(t('patients.pesel_alert'))
@@ -43,7 +43,7 @@ feature "Patients" do
     scenario "should not create new patient with invalid attribtues" do
       click_button t('submit')
 
-      expect(page).to_not have_text(t('patients.created'))
+      expect(page).to_not have_text(t('patients.create.created'))
       expect(current_path).to eq patients_path
     end
   end
@@ -61,7 +61,7 @@ feature "Patients" do
       fill_address_fields("Updated street", "Updated city", "12-345")
       click_button t('submit')
 
-      expect(page).to have_text(t('patients.updated'))
+      expect(page).to have_text(t('patients.update.updated'))
       expect(page).to have_content("Fullname")
       expect(page).to have_content(t('sex.male'))
       expect(page).to have_content('09876543210')
@@ -72,7 +72,7 @@ feature "Patients" do
       fill_in t('activerecord.attributes.patient.fullname'), with: nil
       click_button t('submit')
 
-      expect(page).to_not have_text(t('patients.updated'))
+      expect(page).to_not have_text(t('patients.update.updated'))
       expect(current_path).to eq patient_path(patient)
     end
   end
@@ -81,7 +81,7 @@ feature "Patients" do
     scenario "should delete existing patient" do
       click_link t('patients.patient.destroy_patient'), match: :first
 
-      expect(page).to have_text(t('patients.destroyed'))
+      expect(page).to have_text(t('patients.destroy.destroyed'))
       expect(current_path).to eq patients_path
     end
   end

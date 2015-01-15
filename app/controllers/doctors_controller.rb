@@ -9,7 +9,7 @@ class DoctorsController < ApplicationController
 
   def create
     if @doctor.save
-      flash[:success] = t('doctors.created')
+      flash[:success] = t('.created')
       redirect_to :doctors
     else
       render :new
@@ -18,7 +18,7 @@ class DoctorsController < ApplicationController
 
   def update
     if @doctor.update(doctor_params)
-      flash[:success] = t('doctors.updated')
+      flash[:success] = t('.updated')
       redirect_to :doctors
     else
       render :edit
@@ -27,7 +27,7 @@ class DoctorsController < ApplicationController
 
   def destroy
     @doctor.destroy
-    flash[:error] = t('doctors.destroyed')
+    flash[:error] = t('.destroyed')
     redirect_to :doctors
   end
 

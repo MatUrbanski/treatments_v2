@@ -13,7 +13,7 @@ class OrderingUnitsController < ApplicationController
 
   def create
     if @ordering_unit.save
-      flash[:success] = t('ordering_units.created')
+      flash[:success] = t('.created')
       redirect_to :ordering_units
     else
       render :new
@@ -22,7 +22,7 @@ class OrderingUnitsController < ApplicationController
 
   def update
     if @ordering_unit.update(ordering_unit_params)
-      flash[:success] = t('ordering_units.updated')
+      flash[:success] = t('.updated')
       redirect_to :ordering_units
     else
       render :edit
@@ -31,7 +31,7 @@ class OrderingUnitsController < ApplicationController
 
   def destroy
     @ordering_unit.destroy
-    flash[:error] = t('ordering_units.destroyed')
+    flash[:error] = t('.destroyed')
     redirect_to :ordering_units
   end
 

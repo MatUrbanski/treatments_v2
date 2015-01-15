@@ -1,8 +1,11 @@
 pl:
   patients:
-    created: Pacjent został dodany
-    updated: Pacjent został zaktualizowany
-    destroyed: Pacjent został usunięty
+    create:
+      created: Pacjent został dodany
+    update:
+      updated: Pacjent został zaktualizowany
+    destroy:
+      destroyed: Pacjent został usunięty
     pesel_alert: Brak numeru pesel
     index:
       title: Pacjenci
