@@ -15,4 +15,4 @@
             [:edit, doctor]
         %li
           = link_to t('.destroy_doctor'), doctor,
-            method: :delete
+            method: :delete, data: { confirm: "#{t('are_you_sure')}" }

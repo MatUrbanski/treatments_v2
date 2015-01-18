@@ -5,6 +5,7 @@ pl:
   morning: rano
   evening: wieczorem
   has_associated_records: Nie można usunąć tego obiektu ponieważ inne obiekty są z nim powiązane
+  are_you_sure: Czy jesteś pewien?
   sex:
     male: Mężczyzna
     female: Kobieta

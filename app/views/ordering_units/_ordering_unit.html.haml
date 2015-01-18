@@ -15,4 +15,4 @@
             [:edit, ordering_unit]
         %li
           = link_to t('.destroy_ordering_unit'), ordering_unit,
-            method: :delete
+            method: :delete, data: { confirm: "#{t('are_you_sure')}" }
