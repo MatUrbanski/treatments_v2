@@ -27,3 +27,5 @@
         %li
           = link_to t('.destroy_treatment'), treatment,
             method: :delete, data: { confirm: "#{t('are_you_sure')}" }
+        %li
+          = link_to t('.treatment_copy'), [:new, :treatment, copy_from: treatment.id]

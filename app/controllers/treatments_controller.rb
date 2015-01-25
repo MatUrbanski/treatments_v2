@@ -8,6 +8,14 @@ class TreatmentsController < ApplicationController
     @treatments = @search_form.submit('treatments_search').page(params[:page])
   end
 
+  def new
+    if params[:copy_from]
+      template = Treatment.find(params[:copy_from])
+      @treatment = template.dup
+      @treatment.visitation_time_ids = template.visitation_time_ids
+    end
+  end
+
   def create
     if @treatment.save
       flash[:success] = t('.created')

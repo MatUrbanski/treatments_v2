@@ -15,6 +15,7 @@ pl:
       destroy_treatment: Usuń
       see_days: Zobacz dni
       sum: "Suma:"
+      treatment_copy: Kopiuj zabieg
     new:
       title: Nowy zabieg
     edit:
