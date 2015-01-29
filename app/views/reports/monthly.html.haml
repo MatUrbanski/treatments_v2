@@ -13,12 +13,12 @@
     .center= field_set_tag(t('.weekends'))
 .row
   .col-md-6
-    - TreatmentTypesGroup.all.each do |treatment_group|
+    - @treatment_types_groups.each do |treatment_group|
       %h4.center= "#{treatment_group.name}: #{@report.treatments_total(normal_days: true, treatment_group_id: treatment_group.id)}"
       - treatment_group.treatment_types.each do |treatment_type|
         .center= "#{treatment_type.name}: #{@report.treatments_total(normal_days: true, treatment_type_id: treatment_type.id)}"
   .col-md-6
-    - TreatmentTypesGroup.all.each do |treatment_group|
+    - @treatment_types_groups.each do |treatment_group|
       %h4.center= "#{treatment_group.name}: #{@report.treatments_total(weekends: true, treatment_group_id:  treatment_group.id)}"
       - treatment_group.treatment_types.each do |treatment_type|
         .center= "#{treatment_type.name}: #{@report.treatments_total(weekends: true, treatment_type_id: treatment_type.id)}"

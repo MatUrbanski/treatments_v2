@@ -1,7 +1,6 @@
 class Patient < ActiveRecord::Base
   include AddressableConcern
   extend Enumerize
-  paginates_per 10
 
   has_many :treatments
 

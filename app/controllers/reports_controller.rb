@@ -7,6 +7,7 @@ class ReportsController < ApplicationController
       @date = Date.today
     end
 
-    @report = MonthlyReportPresenterService.new(@date.year, @date.month)
+    @treatment_types_groups = TreatmentTypesGroup.includes(:treatment_types).all
+    @report = MonthlyReport.new(@date.year, @date.month)
   end
 end

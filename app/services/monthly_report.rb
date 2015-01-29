@@ -1,4 +1,4 @@
-class MonthlyReportPresenterService
+class MonthlyReport
   attr_reader :year, :month
 
   def initialize(year, month)
@@ -7,7 +7,7 @@ class MonthlyReportPresenterService
 
     @data = Hash.new
     @data[:normal] = Hash.new
-    @data[:normal][:all_treatments] = VisitationTime.includes(:treatments).
+    @data[:normal][:all_treatments] = VisitationTime.includes(treatments: :treatment_type).
       normal_days_only(self.year, self.month).map(&:treatments).flatten
 
     @data[:weekend] = Hash.new
