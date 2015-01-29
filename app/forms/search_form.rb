@@ -11,11 +11,11 @@ class SearchForm
   private
 
   def ordering_units_search
-    OrderingUnit.search(query)
+    OrderingUnit.includes(:address).search(query)
   end
 
   def doctors_search
-    Doctor.search(query)
+    Doctor.includes(:ordering_unit).search(query)
   end
 
   def treatment_types_search
@@ -23,10 +23,10 @@ class SearchForm
   end
 
   def patients_search
-    Patient.search(query)
+    Patient.includes(:address).search(query)
   end
 
   def treatments_search
-    Treatment.search(query)
+    Treatment.includes(:patient, :doctor, :treatment_type, :visitation_times).search(query)
   end
 end

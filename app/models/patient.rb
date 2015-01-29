@@ -2,7 +2,6 @@ class Patient < ActiveRecord::Base
   include AddressableConcern
   extend Enumerize
   paginates_per 10
-  default_scope { includes(:address) }
 
   has_many :treatments
 

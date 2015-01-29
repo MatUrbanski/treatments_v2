@@ -1,5 +1,4 @@
 class Doctor < ActiveRecord::Base
-  default_scope { includes(:ordering_unit) }
 
   belongs_to :ordering_unit, counter_cache: true
 

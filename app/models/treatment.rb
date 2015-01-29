@@ -1,6 +1,5 @@
 class Treatment < ActiveRecord::Base
   attr_accessor :patient_find
-  default_scope { includes(:patient, :doctor, :treatment_type, :visitation_times) }
 
   belongs_to :patient, counter_cache: true
   belongs_to :doctor, counter_cache: true

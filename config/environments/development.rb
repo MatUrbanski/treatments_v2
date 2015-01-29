@@ -10,7 +10,6 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
   config.after_initialize do
     Bullet.enable = true
-    Bullet.alert = true
-    Bullet.unused_eager_loading_enable = false
+    Bullet.bullet_logger = true
   end
 end

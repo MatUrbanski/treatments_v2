@@ -19,6 +19,6 @@ class TreatmentType < ActiveRecord::Base
   end
 
   def name_with_group_name
-    "#{name} - #{treatment_types_group.name}"
+    "#{name} - #{treatment_types_group_name}"
   end
 end
