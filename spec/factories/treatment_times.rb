@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :treatment_time do
     visitation_time nil
-treatment nil
+    treatment nil
   end
-
 end
